@@ -1,0 +1,76 @@
+.login {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgb(1, 145, 128);
+  background: radial-gradient(
+    circle,
+    rgba(1, 145, 128, 1) 0%,
+    rgba(0, 25, 44, 1) 81%
+  );
+  &__card {
+    display: flex;
+    flex-direction: row;
+    height: 700px;
+    width: 50rem;
+    justify-content: flex-start;
+    align-items: center;
+    border: none;
+  }
+  &__cardImage {
+    height: 100%;
+    border: none;
+  }
+  &__image {
+    display: block;
+    max-height: 100%;
+    height: auto;
+    margin: auto;
+    border-image-slice: 5 fill;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  &__cardSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    padding: 20px;
+    background-color: #ecfcf2;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-color: transparent;
+  }
+  &__cardTitle {
+    display: flex;
+    flex-direction: column;
+    height: 20%;
+  }
+  &__cardForm {
+    display: flex;
+    flex-direction: column;
+  }
+  &__hypeLink {
+    color: #20b4f8;
+  }
+  &__cardBottom {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  &__button {
+    background-color: #53958f; /* Green */
+    border-radius: 8px;
+    color: white;
+    padding: 10px;
+    width: 25%;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+  }
+}
