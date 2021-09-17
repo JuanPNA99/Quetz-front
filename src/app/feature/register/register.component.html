@@ -1,4 +1,4 @@
-<div class="login">
+<div class="register">
   <div
     class="modal fade"
     id="exampleModal"
@@ -74,7 +74,7 @@
         <div class="modal-footer">
           <button
             type="button"
-            class="btn btn-secondary login__btnPrimaryColor"
+            class="btn btn-secondary register__btnPrimaryColor"
             data-bs-dismiss="modal"
           >
             Cerrar
@@ -83,74 +83,88 @@
       </div>
     </div>
   </div>
-  <div class="card login__card">
-    <div class="login__cardImage">
+  <div class="card register__card">
+    <div class="register__cardImage">
       <img
-        class="login__image"
+        class="register__image"
         src="assets/images/login/tarjeta1.png"
         alt="tarjeta"
       />
     </div>
-    <div class="login__cardSection">
-      <div class="login__cardTitle">
-        <h1>Ingresa</h1>
+    <div class="register__cardSection">
+      <div class="register__cardTitle">
+        <h1>Regístrate</h1>
         <span
-          >¿No tienes una cuenta?
-          <a class="login__hyperLink" routerLink="/signup">Regístrate</a></span
+          >¿Ya tienes una cuenta?
+          <a class="register__hyperLink" routerLink="/login">Ingresa</a></span
         >
       </div>
-      <form class="login__cardForm" [formGroup]="formLogin">
+      <form class="register__cardForm" [formGroup]="formRegister">
         <div class="mb-3">
+          <div>
+            <label for="userName" class="form-label">Nombre de usuario</label>
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              formControlName="username"
+            />
+          </div>
           <label for="exampleInputEmail1" class="form-label"
-            >Nombre de usuario</label
+            >Correo electronico</label
           >
           <input
-            type="text"
+            type="email"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            formControlName="username"
+            formControlName="email"
           />
-          <div id="emailHelp" class="form-text">
-            Nunca compartiremos su correo electrónico con nadie más.
+          <div class="mb-3">
+            <label for="password1" class="form-label">Contraseña</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password1"
+              formControlName="password"
+            />
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
-              >Contraseña</label
+            <label for="password2" class="form-label"
+              >Confirmar Contraseña</label
             >
             <input
               type="password"
               class="form-control"
-              id="exampleInputPassword1"
-              formControlName="password"
+              id="password2"
+              formControlName="passwordConfirm"
             />
           </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-              formControlName="checkButton"
-            />
-            <label class="form-check-label" for="exampleCheck1"
-              >Mantener sesión activa</label
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Fecha de nacimiento</label
             >
+            <input
+              type="date"
+              class="form-control"
+              id="exampleInputPassword1"
+              formControlName="birthDate"
+            />
           </div>
         </div>
-        <a class="login__hyperLink">¿Olvidaste tu nombre o contraseña?</a>
-        <div class="login__cardBottom">
+        <div class="register__cardBottom">
           <button
             type="button"
-            class="login__button"
+            class="register__button"
             (click)="test()"
-            [disabled]="!formLogin.valid"
+            [disabled]="!formRegister.valid"
           >
             Ingresar
           </button>
           <span
             >Al ingresar estas aceptando los
             <a
-              class="login__hyperLink"
+              class="register__hyperLink"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               >terminos y condiciones</a
