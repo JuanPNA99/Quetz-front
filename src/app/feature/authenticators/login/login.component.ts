@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   initializeFormLogin(): void {
     this.formLogin = this.formBuilder.group({
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.minLength(8)]],
       password: ['', [Validators.required]],
       checkButton: [''],
     });
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     delete data.checkButton;
     this.usersService.postLogin(data).subscribe(
       (res) => {
+        localStorage.setItem('token', res.access_token);
         console.log(res);
       },
       (error) => {

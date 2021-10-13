@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './feature/login/login.component';
-import { RegisterComponent } from './feature/register/register.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
+    path: '',
+    loadChildren: () =>
+      import('./feature/home/home.module').then((module) => module.HomeModule),
   },
   {
-    path: 'signup',
-    component: RegisterComponent,
+    path: 'auth',
+    loadChildren: () =>
+      import('./feature/authenticators/authenticators.module').then(
+        (module) => module.AuthenticatorsModule
+      ),
+  },
+
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 

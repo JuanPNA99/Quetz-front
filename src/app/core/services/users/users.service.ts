@@ -9,6 +9,12 @@ export class UsersService {
   URL_PATH: string = '/api/users/';
   constructor(private http: HttpClient) {}
 
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    if (token) return true;
+    return false;
+  }
+
   postLogin(formData: any) {
     return this.http.post<any>(
       environment.API_URL + this.URL_PATH + 'login/',

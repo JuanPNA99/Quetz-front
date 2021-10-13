@@ -1,4 +1,4 @@
-<div class="register">
+<div class="register" *ngIf="divRegister">
   <div
     class="modal fade"
     id="exampleModal"
@@ -96,7 +96,7 @@
         <h1>Regístrate</h1>
         <span
           >¿Ya tienes una cuenta?
-          <a class="register__hyperLink" routerLink="/login">Ingresa</a></span
+          <a class="register__hyperLink" routerLink="../login">Ingresa</a></span
         >
       </div>
       <form class="register__cardForm" [formGroup]="formRegister">
@@ -153,13 +153,8 @@
           </div>
         </div>
         <div class="register__cardBottom">
-          <button
-            type="button"
-            class="register__button"
-            (click)="register(formRegister.value)"
-            [disabled]="!formRegister.valid"
-          >
-            Ingresar
+          <button type="button" class="register__button" (click)="showTopics()">
+            Registrarse
           </button>
           <span
             >Al ingresar estas aceptando los
@@ -175,3 +170,4 @@
     </div>
   </div>
 </div>
+<app-topics *ngIf="display"></app-topics>

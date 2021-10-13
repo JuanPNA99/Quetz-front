@@ -1,0 +1,39 @@
+.navbarMine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  &__subNavBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(211 226 219);
+  }
+  &__item {
+    max-width: 4rem;
+  }
+  &__3OptionLi {
+    display: flex;
+    align-items: center;
+  }
+  &__inLine {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__button {
+    background-color: #53958f; /* Green */
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    height: max-content;
+    padding: 0.5rem 2rem;
+    margin-right: 0.5rem;
+    font-size: 15px;
+    &:disabled {
+      background-color: #708381;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbarMine">
+  <!-- <a class="navbar-brand" href="#"
+    ><img class="navbarMine__item" src="assets/images/navbar/Quetz2.png" alt=""
+  /></a> -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav navbarMine__subNavBar">
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+          ><img
+            class="navbarMine__item"
+            src="assets/images/navbar/Quetz2.png"
+            alt=""
+        /></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+          ><img
+            class="navbarMine__item"
+            src="assets/images/navbar/hogar.png"
+            alt=""
+        /></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+          ><img
+            class="navbarMine__item"
+            src="assets/images/navbar/news.png"
+            alt=""
+        /></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+          ><img
+            class="navbarMine__item"
+            src="assets/images/navbar/campana.png"
+            alt="campana.png"
+        /></a>
+      </li>
+
+      <li class="nav-item navbarMine__3OptionLi">
+        <button type="button" class="navbarMine__button">Ingresar</button>
+        <a class="nav-link disabled" href="#" *ngIf="isAuthenticated"
+          ><img
+            class="navbarMine__item"
+            src="assets/images/navbar/graduado.png"
+            alt=""
+        /></a>
+        <div class="navbarMine__inLine" *ngIf="!isAuthenticated">
+          <button type="button" class="navbarMine__button">Ingresar</button>
+          <button type="button" class="navbarMine__button">Registrarse</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
