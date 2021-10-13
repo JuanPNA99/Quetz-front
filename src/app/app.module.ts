@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticatorsModule } from './feature/authenticators/authenticators.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpInterceptorProviders } from './core/interceptor/http-interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,7 @@ import { AuthenticatorsModule } from './feature/authenticators/authenticators.mo
     HttpClientModule,
     AuthenticatorsModule,
   ],
-  providers: [],
+  providers: [HttpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

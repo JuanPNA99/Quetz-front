@@ -28,4 +28,8 @@ export class UsersService {
       formData
     );
   }
+
+  logout() {
+    return this.http.get<any>(environment.API_URL + this.URL_PATH + 'logout/');
+  }
 }

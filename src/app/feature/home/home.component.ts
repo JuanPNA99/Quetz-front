@@ -16,4 +16,18 @@ export class HomeComponent implements OnInit {
   authenticatedConfirm(): void {
     this.isAuthenticated = this.userService.isAuthenticated();
   }
+
+  logout(): void {
+    this.userService.logout().subscribe(
+      (res) => {
+        console.log(res);
+        this.isAuthenticated = false;
+        localStorage.clear();
+      },
+      (err) => {
+        console.log('ps no funciono');
+        localStorage.clear();
+      }
+    );
+  }
 }

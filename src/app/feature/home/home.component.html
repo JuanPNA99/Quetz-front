@@ -49,16 +49,78 @@
       </li>
 
       <li class="nav-item navbarMine__3OptionLi">
-        <button type="button" class="navbarMine__button">Ingresar</button>
-        <a class="nav-link disabled" href="#" *ngIf="isAuthenticated"
-          ><img
-            class="navbarMine__item"
-            src="assets/images/navbar/graduado.png"
-            alt=""
-        /></a>
+        <button
+          type="button"
+          class="navbarMine__button"
+          *ngIf="isAuthenticated"
+        >
+          Crear tutorial
+        </button>
+        <div ngbDropdown display="dynamic" placement="bottom-right">
+          <a class="nav-link" href="#" ngbDropdownToggle *ngIf="isAuthenticated"
+            ><img
+              class="navbarMine__item"
+              src="assets/images/navbar/graduado.png"
+              alt=""
+            />
+          </a>
+          <div
+            ngbDropdownMenu
+            aria-labelledby="dropdownBasic1 "
+            class="dropdown-menu"
+          >
+            <button ngbDropdownItem>
+              <img
+                class="navbarMine__itemDropDown"
+                src="assets/images/navbar/graduado.png"
+                alt="graduado.png"
+              />Nombre
+            </button>
+            <button ngbDropdownItem>
+              <img
+                class="navbarMine__itemDropDown"
+                src="assets/images/navbar/mundo.png"
+                alt="graduado.png"
+              />Idioma
+            </button>
+            <button ngbDropdownItem>
+              <img
+                class="navbarMine__itemDropDown"
+                src="assets/images/navbar/pregunta.png"
+                alt="graduado.png"
+              />Envíanos un comentario
+            </button>
+            <button ngbDropdownItem>
+              <img
+                class="navbarMine__itemDropDown"
+                src="assets/images/navbar/engranaje.png"
+                alt="graduado.png"
+              />Configuración
+            </button>
+            <button ngbDropdownItem (click)="logout()">
+              <img
+                class="navbarMine__itemDropDown"
+                src="assets/images/navbar/cerrar-sesion.png"
+                alt="graduado.png"
+              />Cerrar sesión
+            </button>
+          </div>
+        </div>
         <div class="navbarMine__inLine" *ngIf="!isAuthenticated">
-          <button type="button" class="navbarMine__button">Ingresar</button>
-          <button type="button" class="navbarMine__button">Registrarse</button>
+          <button
+            type="button"
+            class="navbarMine__button"
+            routerLink="/auth/login"
+          >
+            Ingresar
+          </button>
+          <button
+            type="button"
+            class="navbarMine__button"
+            routerLink="/auth/signup"
+          >
+            Registrarse
+          </button>
         </div>
       </li>
     </ul>
