@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-principal',
+  templateUrl: './principal.component.html',
+  styleUrls: ['./principal.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class PrincipalComponent implements OnInit {
   isAuthenticated!: boolean;
   constructor(private userService: UsersService) {}
 

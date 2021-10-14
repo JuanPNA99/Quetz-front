@@ -1,0 +1,69 @@
+<section class="container">
+    <form class="tutorial" [formGroup]="formTutorial">
+        <h1 class="tutorial__h1">Crear tutorial</h1>
+        <span class="tutorial__span"
+            >Todos los campos con * son obligatorios</span
+        >
+        <div class="mb-3 tutorial__input">
+            <label for="title" class="form-label">Título*</label>
+            <input
+                type="text"
+                class="form-control"
+                id="title"
+                aria-describedby="title"
+                formControlName="titulo"
+            />
+        </div>
+        <div class="mb-3 tutorial__input">
+            <label for="description" class="form-label"
+                >Descripción corta*</label
+            >
+            <textarea
+                type=""
+                class="form-control"
+                id="description"
+                aria-describedby="description"
+                formControlName="descripcion"
+            ></textarea>
+        </div>
+        <div class="tutorial__section">
+            <div class="mb-3 tutorial__uploadImg">
+                <div class="tutorial__uploadLabelContainer">
+                    <label
+                        class="btn btn-success tutorial__uploadFileLabel"
+                        for="file"
+                        ><i class="fas fa-camera"></i> Portada*</label
+                    >
+                    <input
+                        #file
+                        class="tutorial__inputFile"
+                        type="file"
+                        accept="image/"
+                        id="file"
+                        formControlName="banner"
+                        (change)="preview(file.files)"
+                    />
+                </div>
+                <div *ngIf="!imgUrl" class="tutorial__placeHolder"></div>
+                <img
+                    *ngIf="imgUrl"
+                    class="tutorial__imagePreview"
+                    [src]="imgUrl"
+                    alt="preview"
+                />
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="sensible">
+                    Este contenido es apto para menores de edad
+                </label>
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="sensible"
+                    formControlName="sensible"
+                />
+            </div>
+        </div>
+    </form>
+</section>

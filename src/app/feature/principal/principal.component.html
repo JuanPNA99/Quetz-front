@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbarMine">
-  <!-- <a class="navbar-brand" href="#"
+  <!-- <a class="navbar-brand" 
     ><img class="navbarMine__item" src="assets/images/navbar/Quetz2.png" alt=""
   /></a> -->
   <button
@@ -15,32 +15,44 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav navbarMine__subNavBar">
-      <li class="nav-item">
-        <a class="nav-link" href="#"
+      <li class="nav-item navbarMine__iconBird" routerLink="/home">
+        <a class="nav-link"
           ><img
             class="navbarMine__item"
             src="assets/images/navbar/Quetz2.png"
             alt=""
         /></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"
+      <li
+        class="nav-item navbarMine__navItem"
+        routerLink="/home"
+        [routerLinkActive]="'active'"
+      >
+        <a class="nav-link navbarMine__navItemContainer"
           ><img
             class="navbarMine__item"
             src="assets/images/navbar/hogar.png"
             alt=""
         /></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"
+      <li
+        class="nav-item navbarMine__navItem"
+        routerLink="/news"
+        [routerLinkActive]="'active'"
+      >
+        <a class="nav-link"
           ><img
             class="navbarMine__item"
             src="assets/images/navbar/news.png"
             alt=""
         /></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"
+      <li
+        class="nav-item navbarMine__navItem"
+        routerLink="/notifications"
+        [routerLinkActive]="'active'"
+      >
+        <a class="nav-link"
           ><img
             class="navbarMine__item"
             src="assets/images/navbar/campana.png"
@@ -53,11 +65,12 @@
           type="button"
           class="navbarMine__button"
           *ngIf="isAuthenticated"
+          routerLink="/tutorial"
         >
           Crear tutorial
         </button>
         <div ngbDropdown display="dynamic" placement="bottom-right">
-          <a class="nav-link" href="#" ngbDropdownToggle *ngIf="isAuthenticated"
+          <a class="nav-link" ngbDropdownToggle *ngIf="isAuthenticated"
             ><img
               class="navbarMine__item"
               src="assets/images/navbar/graduado.png"

@@ -6,7 +6,9 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./feature/home/home.module').then((module) => module.HomeModule),
+      import('./feature/principal/principal.module').then(
+        (module) => module.PrincipalModule
+      ),
   },
   {
     path: 'auth',
