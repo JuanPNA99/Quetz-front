@@ -10,6 +10,8 @@ export class TutorialComponent implements OnInit {
     formTutorial!: FormGroup;
     imgUrl!: any;
     isImageInvalid!: boolean;
+
+    stepsArray: number[] = [1];
     constructor(private formBuilder: FormBuilder) {}
 
     ngOnInit() {
@@ -38,5 +40,9 @@ export class TutorialComponent implements OnInit {
         reader.onload = (_event) => {
             this.imgUrl = reader.result;
         };
+    }
+
+    addStep(step: number): void {
+        this.stepsArray.push(step + 1);
     }
 }

@@ -39,6 +39,7 @@
     &__section {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 100%;
     }
     &__uploadLabelContainer {
@@ -59,4 +60,51 @@
         height: 200px;
         background-color: gray;
     }
+    &__rightColumn {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 2rem;
+        width: 50%;
+    }
+    &__checkContainer {
+        margin-left: 1.5rem;
+    }
+}
+
+.steps {
+    width: 100%;
+    margin-bottom: 2rem;
+    &__input {
+        width: 100%;
+    }
+    &__button {
+        background-color: #53958f;
+    }
+    &__buttonGroup {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+    }
+    &__buttonFix {
+        justify-content: space-between;
+    }
+    &__label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    &__cross {
+        cursor: pointer;
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+.fas,
+.fab {
+    margin-right: 0.5rem;
 }

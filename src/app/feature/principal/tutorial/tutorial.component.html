@@ -19,7 +19,7 @@
                 >Descripción corta*</label
             >
             <textarea
-                type=""
+                type="text"
                 class="form-control"
                 id="description"
                 aria-describedby="description"
@@ -52,17 +52,78 @@
                     alt="preview"
                 />
             </div>
-            <div class="form-check">
-                <label class="form-check-label" for="sensible">
-                    Este contenido es apto para menores de edad
+            <div class="form-check tutorial__rightColumn">
+                <div class="tutorial__checkContainer">
+                    <label class="form-check-label" for="sensible">
+                        Este contenido es apto para menores de edad
+                    </label>
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="sensible"
+                        formControlName="sensible"
+                    />
+                </div>
+                <div>
+                    <select class="form-select" aria-label="Temas">
+                        <option selected>Elija un tema</option>
+                        <option value="1">Teoría musical</option>
+                        <option value="2">Programación</option>
+                        <option value="69">Dibuja</option>
+                        <option value="69">Carpinteria</option>
+                        <option value="69">Crochet</option>
+                        <option value="69">Manga - anime</option>
+                        <option value="69">Guitarra</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="steps" *ngFor="let step of stepsArray; let i = index">
+            <div class="mb-3 steps__input">
+                <label for="step" class="form-label steps__label">
+                    <span>Paso {{ step }}</span>
+                    <i class="fas fa-times steps__cross"></i>
                 </label>
-                <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="sensible"
-                    formControlName="sensible"
-                />
+                <textarea
+                    type="text"
+                    class="form-control"
+                    id="step"
+                    aria-describedby="description"
+                    formControlName="descripcion"
+                ></textarea>
+            </div>
+            <div
+                class="steps__buttonGroup"
+                [ngClass]="{
+                    steps__buttonFix: i === stepsArray.length - 1
+                }"
+            >
+                <button
+                    *ngIf="i === stepsArray.length - 1"
+                    type="button"
+                    class="btn btn-success steps__button"
+                    (click)="addStep(step)"
+                >
+                    <i class="fas fa-puzzle-piece"></i>Agregar paso
+                </button>
+                <div ngbDropdown class="d-inline-block">
+                    <button
+                        class="btn btn-success steps__button"
+                        id="dropdownBasic1"
+                        ngbDropdownToggle
+                    >
+                        Agregar
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem>
+                            <i class="fas fa-image"></i> Imagen
+                        </button>
+                        <button ngbDropdownItem>
+                            <i class="fab fa-youtube"></i> Youtube
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
