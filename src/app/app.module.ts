@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,19 +9,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticatorsModule } from './feature/authenticators/authenticators.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpInterceptorProviders } from './core/interceptor/http-interceptors';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AuthenticatorsModule,
-  ],
-  providers: [HttpInterceptorProviders],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AuthenticatorsModule,
+        BrowserAnimationsModule,
+        NgxSpinnerModule,
+    ],
+    providers: [HttpInterceptorProviders],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

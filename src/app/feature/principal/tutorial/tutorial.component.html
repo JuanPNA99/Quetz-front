@@ -1,4 +1,12 @@
 <section class="container">
+    <ngx-spinner
+        name="sp-create"
+        bdColor="rgba(57,103,99,0.72)"
+        size="medium"
+        color="#ffffff"
+        type="ball-clip-rotate"
+        [fullScreen]="true"
+    ></ngx-spinner>
     <form class="tutorial" [formGroup]="formTutorial">
         <h1 class="tutorial__h1">Crear tutorial</h1>
         <span class="tutorial__span"
@@ -44,13 +52,30 @@
                         (change)="preview(file.files)"
                     />
                 </div>
-                <div *ngIf="!imgUrl" class="tutorial__placeHolder"></div>
-                <img
-                    *ngIf="imgUrl"
-                    class="tutorial__imagePreview"
-                    [src]="imgUrl"
-                    alt="preview"
-                />
+                <!-- <div *ngIf="!imgUrl" class="tutorial__placeHolder"></div> -->
+                <figure class="tutorial__imageContainer">
+                    <ngx-spinner
+                        name="sp-image"
+                        bdColor="rgba(0,0,0,0)"
+                        size="medium"
+                        color="#000000"
+                        type="ball-clip-rotate"
+                        [fullScreen]="false"
+                    ></ngx-spinner>
+                    <img
+                        *ngIf="!imgUrl"
+                        class="tutorial__placeHolder"
+                        src="https://picsum.photos/350/200"
+                        alt="preview"
+                        (load)="imageLoaded($event)"
+                    />
+                    <img
+                        *ngIf="imgUrl"
+                        class="tutorial__imagePreview"
+                        [src]="imgUrl"
+                        alt="preview"
+                    />
+                </figure>
             </div>
             <div class="form-check tutorial__rightColumn">
                 <div class="tutorial__checkContainer">
@@ -66,65 +91,125 @@
                     />
                 </div>
                 <div>
-                    <select class="form-select" aria-label="Temas">
-                        <option selected>Elija un tema</option>
-                        <option value="1">Teoría musical</option>
-                        <option value="2">Programación</option>
-                        <option value="69">Dibuja</option>
-                        <option value="69">Carpinteria</option>
-                        <option value="69">Crochet</option>
-                        <option value="69">Manga - anime</option>
-                        <option value="69">Guitarra</option>
+                    <select
+                        class="form-select"
+                        aria-label="level"
+                        formControlName="nivel"
+                    >
+                        <option selected value="">
+                            ¿Qué nivel tiene este tutorial?
+                        </option>
+                        <option value="bas">Básico</option>
+                        <option value="med">Intermedio</option>
+                        <option value="adv">Avanzado</option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="steps" *ngFor="let step of stepsArray; let i = index">
-            <div class="mb-3 steps__input">
-                <label for="step" class="form-label steps__label">
-                    <span>Paso {{ step }}</span>
-                    <i class="fas fa-times steps__cross"></i>
-                </label>
-                <textarea
-                    type="text"
-                    class="form-control"
-                    id="step"
-                    aria-describedby="description"
-                    formControlName="descripcion"
-                ></textarea>
-            </div>
-            <div
-                class="steps__buttonGroup"
-                [ngClass]="{
-                    steps__buttonFix: i === stepsArray.length - 1
-                }"
-            >
-                <button
-                    *ngIf="i === stepsArray.length - 1"
-                    type="button"
-                    class="btn btn-success steps__button"
-                    (click)="addStep(step)"
-                >
-                    <i class="fas fa-puzzle-piece"></i>Agregar paso
-                </button>
-                <div ngbDropdown class="d-inline-block">
-                    <button
-                        class="btn btn-success steps__button"
-                        id="dropdownBasic1"
-                        ngbDropdownToggle
+        <div
+            class="steps"
+            formArrayName="steps"
+            *ngFor="let step of stepsArray.controls; let i = index"
+        >
+            <div [formGroupName]="i">
+                <div class="steps__content">
+                    <div class="mb-3 steps__input">
+                        <label
+                            for="description_{{
+                                stepsArray.value[i].numero_paso
+                            }}"
+                            class="form-label steps__label"
+                        >
+                            <span
+                                >Paso
+                                {{ stepsArray.value[i].numero_paso }}</span
+                            >
+                            <i
+                                *ngIf="i === stepsArray.length - 1 && i !== 0"
+                                class="fas fa-times steps__cross"
+                                (click)="removeStep(i)"
+                            ></i>
+                        </label>
+                        <textarea
+                            type="text"
+                            class="form-control"
+                            id="description_{{
+                                stepsArray.value[i].numero_paso
+                            }}"
+                            aria-describedby="description"
+                            formControlName="descripcion"
+                        ></textarea>
+                    </div>
+                    <figure
+                        class="tutorial__imageContainer"
+                        *ngIf="stepsArray.value[i].imagen"
                     >
-                        Agregar
+                        <img
+                            class="tutorial__imagePreview"
+                            [src]="stepsArray.value[i].imagen"
+                            alt="image_{{ stepsArray.value[i].numero_paso }}"
+                        />
+                    </figure>
+                </div>
+                <div
+                    class="steps__buttonGroup"
+                    [ngClass]="{
+                        steps__buttonFix: i === stepsArray.length - 1
+                    }"
+                >
+                    <button
+                        *ngIf="i === stepsArray.length - 1"
+                        type="button"
+                        class="btn btn-success steps__button"
+                        (click)="addStep(i)"
+                    >
+                        <i class="fas fa-puzzle-piece"></i>Agregar paso
                     </button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem>
-                            <i class="fas fa-image"></i> Imagen
+                    <div ngbDropdown class="d-inline-block">
+                        <button
+                            class="btn btn-success steps__button"
+                            id="dropdown_{{ stepsArray.value[i].numero_paso }}"
+                            ngbDropdownToggle
+                        >
+                            Agregar
                         </button>
-                        <button ngbDropdownItem>
-                            <i class="fab fa-youtube"></i> Youtube
-                        </button>
+                        <div ngbDropdownMenu aria-labelledby="Dropdown">
+                            <button ngbDropdownItem class="steps__imageButton">
+                                <label
+                                    class="steps__uploadFileLabel"
+                                    for="image_{{
+                                        stepsArray.value[i].numero_paso
+                                    }}"
+                                    ><i class="fas fa-image"></i> Imagen</label
+                                >
+                                <input
+                                    class="tutorial__inputFile"
+                                    type="file"
+                                    accept="image/"
+                                    id="image_{{
+                                        stepsArray.value[i].numero_paso
+                                    }}"
+                                    formControlName="imagen"
+                                    (change)="addStepImage($event, step)"
+                                />
+                            </button>
+                            <button ngbDropdownItem>
+                                <i class="fab fa-youtube"></i> Youtube
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="tutorial__create">
+            <button
+                type="button"
+                class="btn btn-success tutorial__buttonCreate"
+                (click)="createTutorial()"
+                [disabled]="!formTutorial.valid"
+            >
+                Crear tutorial
+            </button>
         </div>
     </form>
 </section>

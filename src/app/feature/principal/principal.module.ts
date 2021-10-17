@@ -12,6 +12,10 @@ import { PrincipalRoutingModule } from './principal-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { MytutorialsComponent } from './profile/mytutorials/mytutorials.component';
+import { MyFollowersComponent } from './profile/my-followers/my-followers.component';
+import { MyInformationComponent } from './profile/my-information/my-information.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
     declarations: [
@@ -23,12 +27,16 @@ import { MytutorialsComponent } from './profile/mytutorials/mytutorials.componen
         TutorialComponent,
         ProfileComponent,
         MytutorialsComponent,
+        MyFollowersComponent,
+        MyInformationComponent,
     ],
     imports: [
         CommonModule,
         PrincipalRoutingModule,
         NgbModule,
         ReactiveFormsModule,
+        SharedModule,
+        NgxSpinnerModule,
     ],
 })
 export class PrincipalModule {}
