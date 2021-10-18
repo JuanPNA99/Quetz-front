@@ -1,0 +1,52 @@
+.snackbar {
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 12px 14px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    i {
+        font-size: 1.3rem;
+    }
+    span {
+        margin-left: 0.8rem;
+        font-weight: 600;
+    }
+}
+
+.m-fadeIn {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 500ms;
+}
+
+.m-fadeOut {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 500ms, opacity 500ms;
+}
+
+.success {
+    background-color: #4cb050;
+}
+
+.error {
+    background-color: #f44336;
+}
+
+.warning {
+    background-color: #ff9800;
+}
+
+.info {
+    background-color: #2196f3;
+}

@@ -7,6 +7,15 @@
         type="ball-clip-rotate"
         [fullScreen]="true"
     ></ngx-spinner>
+    <swal
+        #successTutorial
+        title="Tutorial creado"
+        text="El tutorial fue creado con éxito"
+        icon="success"
+        [toast]="true"
+        [timer]="3000"
+        [showConfirmButton]="false"
+    ></swal>
     <form class="tutorial" [formGroup]="formTutorial">
         <h1 class="tutorial__h1">Crear tutorial</h1>
         <span class="tutorial__span"
@@ -113,7 +122,19 @@
         >
             <div [formGroupName]="i">
                 <div class="steps__content">
-                    <div class="mb-3 steps__input">
+                    <div
+                        class="mb-3 steps__input"
+                        [ngClass]="{
+                            'steps__input--extra':
+                                stepsArray.value[i].imagen ||
+                                stepsArray.value[i].adjunto,
+                            'steps__input--original':
+                                (stepsArray.value[i].imagen &&
+                                    stepsArray.value[i].adjunto) ||
+                                (!stepsArray.value[i].imagen &&
+                                    !stepsArray.value[i].adjunto)
+                        }"
+                    >
                         <label
                             for="description_{{
                                 stepsArray.value[i].numero_paso
@@ -150,6 +171,17 @@
                             alt="image_{{ stepsArray.value[i].numero_paso }}"
                         />
                     </figure>
+                    <div
+                        class="tutorial__youtubeContainer"
+                        *ngIf="stepsArray.value[i].adjunto"
+                    >
+                        <iframe
+                            class="tutorial__youtubeVideo"
+                            [src]="stepsArray.value[i].adjunto"
+                            frameborder="0"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
                 </div>
                 <div
                     class="steps__buttonGroup"
@@ -189,11 +221,10 @@
                                     id="image_{{
                                         stepsArray.value[i].numero_paso
                                     }}"
-                                    formControlName="imagen"
-                                    (change)="addStepImage($event, step)"
+                                    (change)="addStepImage($event, i)"
                                 />
                             </button>
-                            <button ngbDropdownItem>
+                            <button ngbDropdownItem (click)="addYoutubeLink(i)">
                                 <i class="fab fa-youtube"></i> Youtube
                             </button>
                         </div>

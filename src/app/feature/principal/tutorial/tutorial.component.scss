@@ -92,18 +92,37 @@
     &__buttonCreate {
         background-color: #617568;
     }
+    &__youtubeContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16/9;
+        border-radius: 5px;
+    }
+    &__youtubeVideo {
+        width: 90%;
+        height: 90%;
+    }
 }
 
 .steps {
     width: 100%;
     margin-bottom: 2rem;
     &__content {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
     &__input {
         width: 100%;
+        &--extra {
+            grid-column: 1;
+        }
+        &--original {
+            grid-column: 1/3;
+        }
     }
     &__button {
         background-color: #53958f;

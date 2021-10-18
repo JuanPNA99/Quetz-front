@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LinkModalComponent } from './link-modal/link-modal.component';
 
 @Component({
     selector: 'app-tutorial',
@@ -13,16 +17,26 @@ export class TutorialComponent implements OnInit {
     formTutorial!: FormGroup;
     formSteps!: FormArray;
     imgUrl!: any;
+    safeUrl!: string;
+
+    @ViewChild('successTutorial')
+    readonly successTutorial!: SwalComponent;
 
     constructor(
         private formBuilder: FormBuilder,
         private spinner: NgxSpinnerService,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private router: Router,
+        private modalService: NgbModal
     ) {}
 
     ngOnInit() {
         this.showSpinner('sp-image');
         this.buildFormTutorial();
+    }
+
+    async triggerSwalComponent() {
+        this.successTutorial.fire();
     }
 
     buildFormTutorial(): void {
@@ -71,7 +85,7 @@ export class TutorialComponent implements OnInit {
         };
     }
 
-    addStepImage(event: any, step: any): void {
+    addStepImage(event: any, step: number): void {
         if (event.target.files.length === 0) return;
         const mimeType = event.target.files[0].type;
         if (mimeType.match(/image\/*/) === null) {
@@ -80,12 +94,28 @@ export class TutorialComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (_event) => {
-            step.image = reader.result;
+            this.stepsArray.at(step).patchValue({
+                imagen: reader.result,
+            });
         };
     }
 
-    addYoutubeLink(url: string, step: any): void {
-        step.link = this.sanitizer.bypassSecurityTrustUrl(url);
+    addYoutubeLink(step: any): void {
+        const modalRef = this.modalService.open(LinkModalComponent, {
+            centered: true,
+        });
+        modalRef.componentInstance.step = step + 1;
+        modalRef.componentInstance.url.subscribe(
+            (urlString: string) => {
+                this.stepsArray.at(step).patchValue({
+                    adjunto:
+                        this.sanitizer.bypassSecurityTrustResourceUrl(
+                            urlString
+                        ),
+                });
+            },
+            (error: any) => console.log(error)
+        );
     }
 
     addStep(step: any): void {
@@ -102,6 +132,10 @@ export class TutorialComponent implements OnInit {
         this.showSpinner('sp-create');
         setTimeout(() => {
             this.hideSpinner('sp-create');
+            this.triggerSwalComponent();
+            setTimeout(() => {
+                this.router.navigate(['/']);
+            }, 3000);
         }, 1200);
     }
 

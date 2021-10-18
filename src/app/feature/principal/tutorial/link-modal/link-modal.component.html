@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+        Video de youtube - Paso {{ step }}
+    </h4>
+    <button
+        type="button"
+        class="btn btn-danger"
+        aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')"
+    >
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="mb-3">
+        <label for="youtubeLink" class="form-label">Link de Youtube</label>
+        <input
+            type="text"
+            class="form-control"
+            id="youtubeLink"
+            placeholder="https://youtube.com/embed/..."
+            [(ngModel)]="urlString"
+        />
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="addUrl()">
+        Agregar video
+    </button>
+</div>

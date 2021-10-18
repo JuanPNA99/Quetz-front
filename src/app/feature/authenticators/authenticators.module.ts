@@ -6,9 +6,20 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticatorsRoutingModule } from './authenticators-routing.module';
 import { TopicsComponent } from './register/topics/topics.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [AuthenticatorsComponent, RegisterComponent, LoginComponent, TopicsComponent],
-  imports: [CommonModule, ReactiveFormsModule, AuthenticatorsRoutingModule],
+    declarations: [
+        AuthenticatorsComponent,
+        RegisterComponent,
+        LoginComponent,
+        TopicsComponent,
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        AuthenticatorsRoutingModule,
+        SharedModule,
+    ],
 })
 export class AuthenticatorsModule {}

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticatorsModule } from './feature/authenticators/authenticators.module';
 import { HttpInterceptorProviders } from './core/interceptor/http-interceptors';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
         AuthenticatorsModule,
         BrowserAnimationsModule,
         NgxSpinnerModule,
+        SweetAlert2Module.forRoot(),
     ],
     providers: [HttpInterceptorProviders],
     bootstrap: [AppComponent],

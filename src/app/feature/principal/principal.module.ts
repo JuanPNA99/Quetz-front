@@ -9,13 +9,16 @@ import { PrincipalComponent } from './principal.component';
 import { HomeComponent } from './home/home.component';
 import { SearchThemeComponent } from './home/search-theme/search-theme.component';
 import { PrincipalRoutingModule } from './principal-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { MytutorialsComponent } from './profile/mytutorials/mytutorials.component';
 import { MyFollowersComponent } from './profile/my-followers/my-followers.component';
 import { MyInformationComponent } from './profile/my-information/my-information.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { LinkModalComponent } from './tutorial/link-modal/link-modal.component';
+import { TutorialCardComponent } from './home/tutorial-card/tutorial-card.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +32,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
         MytutorialsComponent,
         MyFollowersComponent,
         MyInformationComponent,
+        LinkModalComponent,
+        TutorialCardComponent,
     ],
     imports: [
         CommonModule,
@@ -37,6 +42,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
         ReactiveFormsModule,
         SharedModule,
         NgxSpinnerModule,
+        SweetAlert2Module,
+        FormsModule,
     ],
 })
 export class PrincipalModule {}
