@@ -2,10 +2,9 @@
 
 <div class="container">
     <div class="test">
-        <app-tutorial-card 
-            *ngFor="let tutorial of tutorialsData; let i = index"
+        <app-tutorial-card
+            *ngFor="let tutorial of tutorialsData"
             [data]="tutorial"
-            [id]="i"
         ></app-tutorial-card>
     </div>
 </div>

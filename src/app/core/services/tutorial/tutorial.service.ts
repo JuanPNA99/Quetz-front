@@ -15,4 +15,10 @@ export class TutorialService {
     getTutorials() {
         return this.http.get<any>(environment.API_URL + this.URL_PATH);
     }
+
+    getSpecificTutorial(id: number) {
+        return this.http.get<any>(
+            environment.API_URL + this.URL_PATH + `${id}`
+        );
+    }
 }

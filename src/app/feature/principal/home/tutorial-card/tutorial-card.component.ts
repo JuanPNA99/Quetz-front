@@ -9,7 +9,6 @@ import { TutorialService } from 'src/app/core/services/tutorial/tutorial.service
 })
 export class TutorialCardComponent implements OnInit {
     @Input() data!: any;
-    @Input() id!: number;
 
     constructor(private spinner: NgxSpinnerService) {}
 

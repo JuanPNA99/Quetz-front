@@ -12,8 +12,8 @@
                 <div class="tutorial__accountContainerInformation">
                     <div class="tutorial__accountName">
                         JuanP&nbsp;
-                        <span class="card__circle">&#11044;</span>
-                        <span>Seguir</span>
+                        <span class="tutorial__circle">&#11044;</span>
+                        <span class="tutorial__follow">&nbsp;Seguir</span>
                     </div>
                     <div class="tutorial__likes">
                         <span class="tutorial__likesNumber">80</span>
@@ -25,14 +25,16 @@
         </div>
         <div class="tutorial__header">
             <div class="tutorial__content">
-                <h1 class="tutorial__title">Como preparar aguapanela</h1>
+                <h1 class="tutorial__title">{{ tutorialData?.titulo }}</h1>
                 <p class="tutorial__description">
-                    Te enseñaré paso a paso cómo realizar una deliciosa
-                    aguapanela
+                    {{ tutorialData?.descripcion }}
                 </p>
                 <div class="tutorial__information">
                     <div class="tutorial__level">
-                        Nivel: <span class="tutorial__levelType">Básico</span>
+                        Nivel:
+                        <span class="tutorial__levelType">{{
+                            tutorialData?.nivel | levels
+                        }}</span>
                     </div>
                     <div class="tutorial__theme">
                         Tema: <span class="tutorial__themeType">Cocina</span>
@@ -41,7 +43,7 @@
             </div>
             <figure class="tutorial__imageContainer">
                 <ngx-spinner
-                    name="sp-card"
+                    name="sp-tutorial"
                     bdColor="rgba(0,0,0,0)"
                     size="medium"
                     color="#000000"
@@ -50,26 +52,41 @@
                 ></ngx-spinner>
                 <img
                     class="tutorial__image"
-                    src="https://picsum.photos/160/150"
-                    alt="card_image"
+                    src="https://picsum.photos/350/350"
+                    alt="tutorial_image"
+                    (load)="hideSpinner('sp-tutorial')"
                 />
+                <!-- <img
+                    class="tutorial__image"
+                    [src]="tutorialData?.banner"
+                    alt="tutorial_image"
+                    (load)="hideSpinner('sp-tutorial')"
+                /> -->
             </figure>
         </div>
-        <ol class="steps">
+        <ol
+            class="steps"
+            *ngFor="let step of tutorialData?.paso_Tutorial; let i = index"
+        >
             <li class="steps__step">
-                <h2 class="steps__title">1. Materiales necesarios</h2>
+                <h2 class="steps__title">{{ i + 1 }}.</h2>
                 <p class="steps__content">
-                    Para preparar esta deliciosa bebida necesitaremos 500ml de
-                    agua, un recipiente metálico que se pueda poner al fuego,
-                    cuadros de panela o trozos de un atao de panela
-                    aproximadamente. Si tiene cuadritos necesitaremos uno y si
-                    se tiene un atao cortar un pedazo de unos 100g.
+                    {{ step.descripcion }}
                 </p>
                 <figure class="steps__imageContainer">
+                    <ngx-spinner
+                        name="sp-{{ i }}"
+                        bdColor="rgba(0,0,0,0)"
+                        size="medium"
+                        color="#000000"
+                        type="ball-clip-rotate"
+                        [fullScreen]="false"
+                    ></ngx-spinner>
                     <img
                         class="steps__image"
-                        src="assets/images/tutorials/franqqs_cursememe.png"
+                        src="https://picsum.photos/800/400"
                         alt="paso"
+                        (load)="hideSpinner('sp-{{id}}')"
                     />
                 </figure>
             </li>
