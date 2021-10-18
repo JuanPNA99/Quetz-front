@@ -1,49 +1,63 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  formRegister!: FormGroup;
-  divRegister: boolean = true;
-  display: boolean = false;
-  constructor(
-    private formBuilder: FormBuilder,
-    private usersService: UsersService
-  ) {}
+    formRegister!: FormGroup;
+    divRegister: boolean = true;
+    display: boolean = false;
 
-  ngOnInit(): void {
-    this.initializeFormRegister();
-  }
+    @ViewChild('errorLogin')
+    errorLogin!: SwalComponent;
+    constructor(
+        private formBuilder: FormBuilder,
+        private usersService: UsersService,
+        private spinner: NgxSpinnerService
+    ) {}
 
-  initializeFormRegister(): void {
-    this.formRegister = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(8)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      password_confirmation: ['', [Validators.required]],
-      fecha_nacimiento: ['', [Validators.required]],
-    });
-  }
+    ngOnInit(): void {
+        this.initializeFormRegister();
+    }
 
-  register(data: any): void {
-    this.usersService.postSignup(data).subscribe(
-      (res) => {
-        localStorage.setItem('token', res.access_token);
-        console.log(res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+    async triggerSwalComponent() {
+        this.errorLogin.fire();
+    }
 
-  showTopics() {
-    this.divRegister = false;
-    this.display = true;
-  }
+    initializeFormRegister(): void {
+        this.formRegister = this.formBuilder.group({
+            username: ['', [Validators.required, Validators.minLength(8)]],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required]],
+            password_confirmation: ['', [Validators.required]],
+            fecha_nacimiento: ['', [Validators.required]],
+        });
+    }
+
+    register(): void {
+        this.spinner.show();
+        this.usersService.postSignup(this.formRegister.value).subscribe(
+            (res) => {
+                this.spinner.hide();
+                this.showTopics();
+                localStorage.setItem('token', res.access_token);
+            },
+            (error) => {
+                this.spinner.hide();
+                this.triggerSwalComponent();
+                console.log(error);
+            }
+        );
+    }
+
+    showTopics() {
+        this.divRegister = false;
+        this.display = true;
+    }
 }

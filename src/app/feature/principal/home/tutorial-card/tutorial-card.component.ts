@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { TutorialService } from 'src/app/core/services/tutorial/tutorial.service';
 
 @Component({
@@ -8,8 +9,15 @@ import { TutorialService } from 'src/app/core/services/tutorial/tutorial.service
 })
 export class TutorialCardComponent implements OnInit {
     @Input() data!: any;
+    @Input() id!: number;
 
-    constructor() {}
+    constructor(private spinner: NgxSpinnerService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.spinner.show('sp-card');
+    }
+
+    loadingImage(): void {
+        this.spinner.hide('sp-card');
+    }
 }

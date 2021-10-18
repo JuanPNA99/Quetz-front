@@ -19,6 +19,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { LinkModalComponent } from './tutorial/link-modal/link-modal.component';
 import { TutorialCardComponent } from './home/tutorial-card/tutorial-card.component';
+import { SpecificTutorialComponent } from './specific-tutorial/specific-tutorial.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { TutorialCardComponent } from './home/tutorial-card/tutorial-card.compon
         MyInformationComponent,
         LinkModalComponent,
         TutorialCardComponent,
+        SpecificTutorialComponent,
     ],
     imports: [
         CommonModule,

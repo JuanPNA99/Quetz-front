@@ -1,9 +1,9 @@
-<div class="card">
+<div class="card" [routerLink]="['/tutorial', id]">
     <div class="card__profile">
         <div class="card__avatarContainer">
             <img
                 class="card__avatar"
-                src="assets/images/tutorials/franqqs_curse.png"
+                src="assets/images/user/avatar.jpg"
                 alt="pancho"
             />
         </div>
@@ -11,8 +11,8 @@
             <div class="card__profilePrimeInfo">
                 <div class="card__account">
                     <span class="card__name">JuanP&nbsp;</span>
-                    <span class="card__circle">&#11044;&nbsp;</span>
-                    <span class="card__follow">Seguir</span>
+                    <span class="card__circle">&#11044;</span>
+                    <span class="card__follow">&nbsp;Seguir</span>
                 </div>
                 <div class="card__likes">
                     <span class="card__likesNumber">80</span>
@@ -37,10 +37,19 @@
         </div>
         <div class="card__assets">
             <figure class="card__imageContainer">
+                <ngx-spinner
+                    name="sp-card"
+                    bdColor="rgba(0,0,0,0)"
+                    size="medium"
+                    color="#000000"
+                    type="ball-clip-rotate"
+                    [fullScreen]="false"
+                ></ngx-spinner>
                 <img
                     class="card__image"
                     src="https://picsum.photos/160/150"
-                    alt="franqq"
+                    alt="card_image"
+                    (load)="loadingImage()"
                 />
             </figure>
         </div>

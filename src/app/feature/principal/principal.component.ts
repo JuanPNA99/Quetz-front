@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { UsersService } from 'src/app/core/services/users/users.service';
 })
 export class PrincipalComponent implements OnInit {
     isAuthenticated!: boolean;
-    constructor(private userService: UsersService) {}
+    constructor(
+        private userService: UsersService,
+        private spinner: NgxSpinnerService
+    ) {}
 
     ngOnInit(): void {
         this.authenticatedConfirm();
@@ -18,12 +22,15 @@ export class PrincipalComponent implements OnInit {
     }
 
     logout(): void {
+        this.spinner.show();
         this.userService.logout().subscribe(
             (res) => {
+                this.spinner.hide();
                 this.isAuthenticated = false;
                 localStorage.clear();
             },
             (err) => {
+                this.spinner.hide();
                 this.isAuthenticated = false;
                 localStorage.clear();
             }

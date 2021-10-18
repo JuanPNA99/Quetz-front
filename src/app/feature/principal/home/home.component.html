@@ -3,8 +3,9 @@
 <div class="container">
     <div class="test">
         <app-tutorial-card 
-            *ngFor="let tutorial of tutorialsData"
+            *ngFor="let tutorial of tutorialsData; let i = index"
             [data]="tutorial"
+            [id]="i"
         ></app-tutorial-card>
     </div>
 </div>

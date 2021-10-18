@@ -1,165 +1,191 @@
+<ngx-spinner
+    bdColor="rgba(57,103,99,0.5)"
+    size="medium"
+    color="#ffffff"
+    type="ball-clip-rotate"
+    [fullScreen]="true"
+></ngx-spinner>
+<swal
+    #errorLogin
+    title="Error"
+    text="Credenciales incorrectas"
+    icon="error"
+    [toast]="true"
+    [timer]="2000"
+    [showConfirmButton]="false"
+></swal>
 <div class="login">
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            Términos y Condiciones
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+    <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Términos y Condiciones
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nullam enim nibh, aliquet id gravida tempor, vestibulum et
+                    est. Sed non massa a metus sagittis blandit quis eget
+                    lectus. Maecenas purus ante, volutpat nec faucibus eu,
+                    viverra id est. Ut at ante sed sem porttitor porttitor.
+                    Quisque a diam varius, tincidunt augue at, tincidunt quam.
+                    Fusce sit amet pellentesque magna. Nam a mollis sem, vel
+                    convallis mauris. Nullam tempus lectus lectus, sed feugiat
+                    sem congue at. In mattis ipsum sit amet efficitur eleifend.
+                    Pellentesque dapibus semper sapien vel auctor. Sed molestie
+                    urna et nisl interdum consectetur. Etiam sit amet facilisis
+                    dui, efficitur rutrum nunc. Phasellus egestas placerat
+                    tortor vitae euismod. Mauris congue tempus libero, sed
+                    dignissim sapien. Nullam convallis neque orci, vitae aliquam
+                    risus consectetur id. Cras laoreet euismod tellus vel
+                    commodo. Aliquam dolor neque, gravida non accumsan lobortis,
+                    volutpat vitae justo. Aenean sed tortor fringilla, ultricies
+                    odio eget, semper nisi. Maecenas pharetra condimentum ipsum
+                    in eleifend. Nunc ornare orci at odio congue elementum. Sed
+                    tristique non mauris et lacinia. Sed placerat sodales odio
+                    sagittis ultrices. Ut mattis, arcu eu eleifend efficitur,
+                    justo libero pellentesque velit, in mattis sapien est
+                    egestas nulla. Aliquam sit amet posuere augue, ut viverra
+                    arcu. Sed sit amet massa vel turpis varius eleifend. Aliquam
+                    eget sapien eu mi hendrerit volutpat in ut mauris. Sed
+                    fringilla urna ac purus dictum, eu venenatis augue
+                    hendrerit. Fusce eu nisl arcu. Maecenas luctus velit vitae
+                    felis porta, a scelerisque mi feugiat. Vivamus a mattis
+                    arcu, quis gravida augue. Maecenas non tempus mi, vel cursus
+                    lorem. Proin venenatis non tellus eu ultricies. Ut placerat,
+                    magna vitae condimentum ultricies, leo mi hendrerit orci,
+                    vel ultrices metus odio non nisl. Ut sollicitudin lectus non
+                    fringilla pulvinar. Ut eleifend nibh urna, a porta nulla
+                    porttitor non. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Donec eu posuere ex. Phasellus luctus risus
+                    nibh, a aliquet purus ornare vitae. Sed dignissim nisl ac
+                    lorem viverra faucibus. Phasellus aliquet nunc eget dictum
+                    faucibus. Maecenas in auctor odio. Etiam elementum tempor
+                    aliquet. Cras a sodales massa, id rhoncus erat. Ut et
+                    consequat arcu. Sed venenatis ante quam, ut rutrum erat
+                    iaculis in. Sed bibendum erat vel ante porttitor placerat.
+                    Ut non lorem rhoncus, ullamcorper enim nec, pharetra nulla.
+                    Pellentesque orci risus, sagittis a auctor vel, efficitur in
+                    mauris. Suspendisse id leo sodales, fringilla orci sit amet,
+                    sodales lorem. In egestas tellus neque, ut cursus nulla
+                    imperdiet ac. Donec molestie blandit lacus, sit amet mattis
+                    elit pharetra non. Donec ac accumsan sem. Vivamus viverra
+                    eleifend sagittis. Nam ut eros feugiat sapien malesuada
+                    suscipit dapibus nec ante. Nunc porta vel mauris vel
+                    aliquet. Integer et odio non metus mollis mollis vulputate
+                    non tortor. Cras nec diam sed neque varius ultrices. Etiam
+                    in tempor massa, a porta enim. Nulla ultrices urna sed eros
+                    aliquam fermentum. Suspendisse vel iaculis lectus. Proin in
+                    erat commodo, porta ante ut, mollis nulla. Class aptent
+                    taciti sociosqu ad litora torquent per conubia nostra, per
+                    inceptos himenaeos. Sed vestibulum tristique tincidunt.
+                    Quisque feugiat, nunc id aliquam mattis, leo orci
+                    pellentesque orci, non pharetra erat augue quis erat.
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary login__btnPrimaryColor"
+                        data-bs-dismiss="modal"
+                    >
+                        Cerrar
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim
-          nibh, aliquet id gravida tempor, vestibulum et est. Sed non massa a
-          metus sagittis blandit quis eget lectus. Maecenas purus ante, volutpat
-          nec faucibus eu, viverra id est. Ut at ante sed sem porttitor
-          porttitor. Quisque a diam varius, tincidunt augue at, tincidunt quam.
-          Fusce sit amet pellentesque magna. Nam a mollis sem, vel convallis
-          mauris. Nullam tempus lectus lectus, sed feugiat sem congue at. In
-          mattis ipsum sit amet efficitur eleifend. Pellentesque dapibus semper
-          sapien vel auctor. Sed molestie urna et nisl interdum consectetur.
-          Etiam sit amet facilisis dui, efficitur rutrum nunc. Phasellus egestas
-          placerat tortor vitae euismod. Mauris congue tempus libero, sed
-          dignissim sapien. Nullam convallis neque orci, vitae aliquam risus
-          consectetur id. Cras laoreet euismod tellus vel commodo. Aliquam dolor
-          neque, gravida non accumsan lobortis, volutpat vitae justo. Aenean sed
-          tortor fringilla, ultricies odio eget, semper nisi. Maecenas pharetra
-          condimentum ipsum in eleifend. Nunc ornare orci at odio congue
-          elementum. Sed tristique non mauris et lacinia. Sed placerat sodales
-          odio sagittis ultrices. Ut mattis, arcu eu eleifend efficitur, justo
-          libero pellentesque velit, in mattis sapien est egestas nulla. Aliquam
-          sit amet posuere augue, ut viverra arcu. Sed sit amet massa vel turpis
-          varius eleifend. Aliquam eget sapien eu mi hendrerit volutpat in ut
-          mauris. Sed fringilla urna ac purus dictum, eu venenatis augue
-          hendrerit. Fusce eu nisl arcu. Maecenas luctus velit vitae felis
-          porta, a scelerisque mi feugiat. Vivamus a mattis arcu, quis gravida
-          augue. Maecenas non tempus mi, vel cursus lorem. Proin venenatis non
-          tellus eu ultricies. Ut placerat, magna vitae condimentum ultricies,
-          leo mi hendrerit orci, vel ultrices metus odio non nisl. Ut
-          sollicitudin lectus non fringilla pulvinar. Ut eleifend nibh urna, a
-          porta nulla porttitor non. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Donec eu posuere ex. Phasellus luctus risus nibh, a
-          aliquet purus ornare vitae. Sed dignissim nisl ac lorem viverra
-          faucibus. Phasellus aliquet nunc eget dictum faucibus. Maecenas in
-          auctor odio. Etiam elementum tempor aliquet. Cras a sodales massa, id
-          rhoncus erat. Ut et consequat arcu. Sed venenatis ante quam, ut rutrum
-          erat iaculis in. Sed bibendum erat vel ante porttitor placerat. Ut non
-          lorem rhoncus, ullamcorper enim nec, pharetra nulla. Pellentesque orci
-          risus, sagittis a auctor vel, efficitur in mauris. Suspendisse id leo
-          sodales, fringilla orci sit amet, sodales lorem. In egestas tellus
-          neque, ut cursus nulla imperdiet ac. Donec molestie blandit lacus, sit
-          amet mattis elit pharetra non. Donec ac accumsan sem. Vivamus viverra
-          eleifend sagittis. Nam ut eros feugiat sapien malesuada suscipit
-          dapibus nec ante. Nunc porta vel mauris vel aliquet. Integer et odio
-          non metus mollis mollis vulputate non tortor. Cras nec diam sed neque
-          varius ultrices. Etiam in tempor massa, a porta enim. Nulla ultrices
-          urna sed eros aliquam fermentum. Suspendisse vel iaculis lectus. Proin
-          in erat commodo, porta ante ut, mollis nulla. Class aptent taciti
-          sociosqu ad litora torquent per conubia nostra, per inceptos
-          himenaeos. Sed vestibulum tristique tincidunt. Quisque feugiat, nunc
-          id aliquam mattis, leo orci pellentesque orci, non pharetra erat augue
-          quis erat.
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary login__btnPrimaryColor"
-            data-bs-dismiss="modal"
-          >
-            Cerrar
-          </button>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="card login__card">
-    <div class="login__cardImage">
-      <img
-        class="login__image"
-        src="assets/images/login/tarjeta1.png"
-        alt="tarjeta"
-      />
-    </div>
-    <div class="login__cardSection">
-      <div class="login__cardTitle">
-        <h1>Ingresa</h1>
-        <span
-          >¿No tienes una cuenta?
-          <a class="login__hyperLink" routerLink="../signup"
-            >Regístrate</a
-          ></span
-        >
-      </div>
-      <form class="login__cardForm" [formGroup]="formLogin">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Nombre de usuario</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            formControlName="username"
-          />
-          <div id="emailHelp" class="form-text">
-            Nunca compartiremos su correo electrónico con nadie más.
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
-              >Contraseña</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              formControlName="password"
+    <div class="card login__card">
+        <div class="login__cardImage">
+            <img
+                class="login__image"
+                src="assets/images/login/tarjeta1.png"
+                alt="tarjeta"
             />
-          </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-              formControlName="checkButton"
-            />
-            <label class="form-check-label" for="exampleCheck1"
-              >Mantener sesión activa</label
-            >
-          </div>
         </div>
-        <a class="login__hyperLink">¿Olvidaste tu nombre o contraseña?</a>
-        <div class="login__cardBottom">
-          <button
-            type="button"
-            class="login__button"
-            (click)="login(formLogin.value)"
-            [disabled]="!formLogin.valid"
-          >
-            Ingresar
-          </button>
-          <span
-            >Al ingresar estas aceptando los
-            <a
-              class="login__hyperLink"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              >terminos y condiciones</a
-            ></span
-          >
+        <div class="login__cardSection">
+            <div class="login__cardTitle">
+                <h1>Ingresa</h1>
+                <span
+                    >¿No tienes una cuenta?
+                    <a class="login__hyperLink" routerLink="../signup"
+                        >Regístrate</a
+                    ></span
+                >
+            </div>
+            <form class="login__cardForm" [formGroup]="formLogin">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"
+                        >Nombre de usuario</label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        formControlName="username"
+                    />
+                    <div id="emailHelp" class="form-text">
+                        Nunca compartiremos su correo electrónico con nadie más.
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label"
+                            >Contraseña</label
+                        >
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword1"
+                            formControlName="password"
+                        />
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input
+                            type="checkbox"
+                            class="form-check-input"
+                            id="exampleCheck1"
+                            formControlName="checkButton"
+                        />
+                        <label class="form-check-label" for="exampleCheck1"
+                            >Mantener sesión activa</label
+                        >
+                    </div>
+                </div>
+                <a class="login__hyperLink"
+                    >¿Olvidaste tu nombre o contraseña?</a
+                >
+                <div class="login__cardBottom">
+                    <button
+                        type="button"
+                        class="login__button"
+                        (click)="login(formLogin.value)"
+                        [disabled]="!formLogin.valid"
+                    >
+                        Ingresar
+                    </button>
+                    <span
+                        >Al ingresar estas aceptando los
+                        <a
+                            class="login__hyperLink"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                            >terminos y condiciones</a
+                        ></span
+                    >
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
 </div>

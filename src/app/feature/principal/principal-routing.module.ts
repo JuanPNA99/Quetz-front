@@ -5,6 +5,7 @@ import { NewsComponent } from './news/news.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { PrincipalComponent } from './principal.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SpecificTutorialComponent } from './specific-tutorial/specific-tutorial.component';
 
 import { TutorialComponent } from './tutorial/tutorial.component';
 
@@ -32,6 +33,10 @@ const routes: Routes = [
             {
                 path: 'tutorial',
                 component: TutorialComponent,
+            },
+            {
+                path: 'tutorial/:id',
+                component: SpecificTutorialComponent,
             },
             {
                 path: 'profile',

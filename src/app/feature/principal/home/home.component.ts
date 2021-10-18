@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
         this.tutorialService.getTutorials().subscribe(
             (res) => {
                 this.tutorialsData = res;
+                this.tutorialService.tutorialData = res;
                 console.log(res);
             },
             (err) => {

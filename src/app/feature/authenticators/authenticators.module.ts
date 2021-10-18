@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthenticatorsRoutingModule } from './authenticators-routing.module';
 import { TopicsComponent } from './register/topics/topics.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
     declarations: [
@@ -20,6 +22,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
         ReactiveFormsModule,
         AuthenticatorsRoutingModule,
         SharedModule,
+        SweetAlert2Module,
+        NgxSpinnerModule,
     ],
 })
 export class AuthenticatorsModule {}

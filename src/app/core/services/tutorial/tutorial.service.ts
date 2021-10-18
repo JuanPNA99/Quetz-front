@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class TutorialService {
     URL_PATH: string = '/api/tutorials/';
+    tutorialData!: any[];
 
     constructor(private http: HttpClient) {}
 
