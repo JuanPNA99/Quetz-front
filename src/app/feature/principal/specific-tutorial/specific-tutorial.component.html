@@ -50,18 +50,18 @@
                     type="ball-clip-rotate"
                     [fullScreen]="false"
                 ></ngx-spinner>
-                <img
+                <!-- <img
                     class="tutorial__image"
                     src="https://picsum.photos/350/350"
                     alt="tutorial_image"
                     (load)="hideSpinner('sp-tutorial')"
-                />
-                <!-- <img
+                /> -->
+                <img
                     class="tutorial__image"
                     [src]="tutorialData?.banner"
-                    alt="tutorial_image"
+                    alt=""
                     (load)="hideSpinner('sp-tutorial')"
-                /> -->
+                />
             </figure>
         </div>
         <ol
@@ -73,7 +73,7 @@
                 <p class="steps__content">
                     {{ step.descripcion }}
                 </p>
-                <figure class="steps__imageContainer">
+                <figure *ngIf="step.imagen" class="steps__imageContainer">
                     <ngx-spinner
                         name="sp-{{ i }}"
                         bdColor="rgba(0,0,0,0)"
@@ -82,9 +82,15 @@
                         type="ball-clip-rotate"
                         [fullScreen]="false"
                     ></ngx-spinner>
-                    <img
+                    <!-- <img
                         class="steps__image"
                         src="https://picsum.photos/800/400"
+                        alt="paso"
+                        (load)="hideSpinner('sp-{{id}}')"
+                    /> -->
+                    <img
+                        class="steps__image"
+                        [src]="step.imagen"
                         alt="paso"
                         (load)="hideSpinner('sp-{{id}}')"
                     />

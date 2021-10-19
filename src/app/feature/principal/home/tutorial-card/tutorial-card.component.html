@@ -45,10 +45,16 @@
                     type="ball-clip-rotate"
                     [fullScreen]="false"
                 ></ngx-spinner>
-                <img
+                <!-- <img
                     class="card__image"
                     src="https://picsum.photos/160/150"
                     alt="card_image"
+                    (load)="loadingImage()"
+                /> -->
+                <img
+                    class="card__image"
+                    [src]="data.banner"
+                    alt=""
                     (load)="loadingImage()"
                 />
             </figure>
