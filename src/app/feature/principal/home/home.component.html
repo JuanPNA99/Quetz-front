@@ -1,10 +1,12 @@
-<!-- <app-search-theme></app-search-theme> -->
-
-<div class="container">
-    <div class="test">
-        <app-tutorial-card
-            *ngFor="let tutorial of tutorialsData"
-            [data]="tutorial"
-        ></app-tutorial-card>
+<div class="home">
+    <app-search-theme></app-search-theme>
+    <div class="home__container_2">
+        <div class="test">
+            <app-tutorial-card
+                *ngFor="let tutorial of tutorialsData"
+                [data]="tutorial"
+            ></app-tutorial-card>
+        </div>
     </div>
+    <app-advertising></app-advertising>
 </div>

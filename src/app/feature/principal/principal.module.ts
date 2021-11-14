@@ -20,6 +20,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { LinkModalComponent } from './tutorial/link-modal/link-modal.component';
 import { TutorialCardComponent } from './home/tutorial-card/tutorial-card.component';
 import { SpecificTutorialComponent } from './specific-tutorial/specific-tutorial.component';
+import { AdvertisingComponent } from './home/advertising/advertising.component';
+import { NewsCardComponent } from './news/news-card/news-card.component';
+import { NotificationsCardComponent } from './notifications/notifications-card/notifications-card.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +39,9 @@ import { SpecificTutorialComponent } from './specific-tutorial/specific-tutorial
         LinkModalComponent,
         TutorialCardComponent,
         SpecificTutorialComponent,
+        AdvertisingComponent,
+        NewsCardComponent,
+        NotificationsCardComponent,
     ],
     imports: [
         CommonModule,

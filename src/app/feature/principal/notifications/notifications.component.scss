@@ -1,0 +1,28 @@
+.notifications {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: calc(100vh - 90px);
+        padding: 3rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
+        border-right: #c4c4c4 1px solid;
+        border-left: #c4c4c4 1px solid;
+    }
+}
+
+.test {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 700px;
+}

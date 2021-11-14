@@ -9,6 +9,45 @@
     <!-- <a class="navbar-brand" 
     ><img class="navbarMine__item" src="assets/images/navbar/Quetz2.png" alt=""
   /></a> -->
+    <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Estamos trabajando en mejorar tu experiencia
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    Esta funcionalidad estara displonible en proximas versiones
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="
+                            navbarMine__modalButton
+                            btn btn-secondary
+                            navbarMine__btnModalPrimaryColor
+                        "
+                        data-bs-dismiss="modal"
+                    >
+                        Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <button
         class="navbar-toggler"
         type="button"
@@ -32,8 +71,9 @@
             </li>
             <li
                 class="nav-item navbarMine__navItem"
-                routerLink="/home"
+                routerLink="./auth/signup"
                 [routerLinkActive]="'active'"
+                *ngIf="!isAuthenticated"
             >
                 <a class="nav-link navbarMine__navItemContainer"
                     ><img
@@ -44,8 +84,22 @@
             </li>
             <li
                 class="nav-item navbarMine__navItem"
-                routerLink="/news"
+                routerLink="/home"
                 [routerLinkActive]="'active'"
+                *ngIf="isAuthenticated"
+            >
+                <a class="nav-link navbarMine__navItemContainer"
+                    ><img
+                        class="navbarMine__item"
+                        src="assets/images/navbar/hogar.png"
+                        alt="home.png"
+                /></a>
+            </li>
+            <li
+                class="nav-item navbarMine__navItem"
+                routerLink="./auth/signup"
+                [routerLinkActive]="'active'"
+                *ngIf="!isAuthenticated"
             >
                 <a class="nav-link"
                     ><img
@@ -56,8 +110,35 @@
             </li>
             <li
                 class="nav-item navbarMine__navItem"
+                routerLink="/news"
+                [routerLinkActive]="'active'"
+                *ngIf="isAuthenticated"
+            >
+                <a class="nav-link"
+                    ><img
+                        class="navbarMine__item"
+                        src="assets/images/navbar/news.png"
+                        alt="news.png"
+                /></a>
+            </li>
+            <li
+                class="nav-item navbarMine__navItem"
+                routerLink="./auth/signup"
+                [routerLinkActive]="'active'"
+                *ngIf="!isAuthenticated"
+            >
+                <a class="nav-link"
+                    ><img
+                        class="navbarMine__item"
+                        src="assets/images/navbar/campana.png"
+                        alt="campana.png"
+                /></a>
+            </li>
+            <li
+                class="nav-item navbarMine__navItem"
                 routerLink="/notifications"
                 [routerLinkActive]="'active'"
+                *ngIf="isAuthenticated"
             >
                 <a class="nav-link"
                     ><img
@@ -103,7 +184,11 @@
                                 alt="graduado.png"
                             />Perfil
                         </button>
-                        <button ngbDropdownItem>
+                        <button
+                            ngbDropdownItem
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                        >
                             <img
                                 class="navbarMine__itemDropDown"
                                 src="assets/images/navbar/mundo.png"
