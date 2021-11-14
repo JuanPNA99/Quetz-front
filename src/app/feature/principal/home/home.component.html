@@ -1,14 +1,18 @@
 <div class="home">
-    <app-search-theme
-        (searchEvent)="tutorialSearched($event)"
-    ></app-search-theme>
+    <div class="home__container_1">
+        <app-search-theme
+            (searchEvent)="tutorialSearched($event)"
+        ></app-search-theme>
+    </div>
     <div class="home__container_2">
-        <div class="test">
+        <div class="home__test">
             <app-tutorial-card
                 *ngFor="let tutorial of tutorialsData"
                 [data]="tutorial"
             ></app-tutorial-card>
         </div>
     </div>
-    <app-advertising></app-advertising>
+    <div class="home__container_3">
+        <app-advertising></app-advertising>
+    </div>
 </div>

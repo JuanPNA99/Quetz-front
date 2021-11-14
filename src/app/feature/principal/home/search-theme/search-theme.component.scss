@@ -4,9 +4,8 @@
     align-items: flex-start;
     justify-content: space-around;
     padding: 0;
-    width: 400px;
+    width: 100%;
     min-height: 100vh;
-    max-height: 100vh;
     &__formSearch {
         padding-top: 3rem;
         padding-bottom: 3rem;
@@ -17,7 +16,7 @@
         margin-bottom: 1rem;
     }
     &__linksList {
-        width: 300px;
+        width: 80%;
         margin-left: 2rem;
         margin-right: 2rem;
     }
