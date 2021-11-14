@@ -1,5 +1,7 @@
 <div class="home">
-    <app-search-theme></app-search-theme>
+    <app-search-theme
+        (searchEvent)="tutorialSearched($event)"
+    ></app-search-theme>
     <div class="home__container_2">
         <div class="test">
             <app-tutorial-card

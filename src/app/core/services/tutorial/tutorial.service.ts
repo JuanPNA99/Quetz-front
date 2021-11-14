@@ -16,6 +16,12 @@ export class TutorialService {
         return this.http.get<any>(environment.API_URL + this.URL_PATH);
     }
 
+    getTutorialByFilters(params: any) {
+        return this.http.get<any>(environment.API_URL + this.URL_PATH, {
+            params,
+        });
+    }
+
     getSpecificTutorial(id: number) {
         return this.http.get<any>(
             environment.API_URL + this.URL_PATH + `${id}`

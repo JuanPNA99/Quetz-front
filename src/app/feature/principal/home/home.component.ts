@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
         this.getTutorials();
     }
 
+    tutorialSearched(event: any): void {
+        this.tutorialsData = event;
+    }
+
     getTutorials(): void {
         this.tutorialService.getTutorials().subscribe(
             (res) => {

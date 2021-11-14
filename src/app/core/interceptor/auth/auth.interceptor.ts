@@ -17,10 +17,17 @@ export class AuthInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<unknown>> {
         const authToken = localStorage.getItem('token');
         const urlArray = request.url.split('/');
-        if (
-            urlArray[urlArray.length - 2] !== 'login' &&
-            urlArray[urlArray.length - 2] !== 'signup'
-        )
+        // if (
+        //     urlArray[urlArray.length - 2] !== 'login' &&
+        //     urlArray[urlArray.length - 2] !== 'signup'
+        // )
+        //     request = request.clone({
+        //         url: request.url,
+        //         setHeaders: {
+        //             Authorization: `Token ${authToken}`,
+        //         },
+        //     });
+        if (authToken)
             request = request.clone({
                 url: request.url,
                 setHeaders: {

@@ -3,12 +3,11 @@
     <div class="container__linksList">
         <p>Temas que te pueden interesar</p>
         <ul class="ulClass">
-            <li><img src="" alt="" />Escritura</li>
-            <li><img src="" alt="" />Idiomas</li>
-            <li><img src="" alt="" />Cocina</li>
-            <li><img src="" alt="" />Video juegos</li>
-            <li><img src="" alt="" />Víolin</li>
-            <li><img src="" alt="" />Teoría musical</li>
+            <li *ngFor="let theme of themeData">
+                <img [src]="theme.imagen_tema" [alt]="theme.nombre_tema" />{{
+                    theme.nombre_tema
+                }}
+            </li>
         </ul>
     </div>
 </div>

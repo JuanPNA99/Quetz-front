@@ -2,13 +2,16 @@
     <form class="container__formSearch form-inline my-2 my-lg-0">
         <input
             class="container__myInput form-control mr-sm-2"
-            type="search"
+            type="text"
             placeholder="Buscar"
             aria-label="Buscar"
+            name="search"
+            [(ngModel)]="searchInput"
         />
         <button
             class="container__myButton btn btn-outline-success my-2 my-sm-0"
             type="submit"
+            (click)="searchTheme()"
         >
             Buscar
         </button>
