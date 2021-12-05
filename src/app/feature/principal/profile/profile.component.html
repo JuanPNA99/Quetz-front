@@ -1,12 +1,53 @@
 <section class="container">
     <div class="userNavigation">
         <div class="userNavigation__userBasics">
+            <div class="profile__uploadLabelContainer">
+                <form [formGroup]="formUser">
+                    <label
+                        class="
+                            userNavigation__myButton
+                            btn btn-success
+                            profile__uploadFileLabel
+                        "
+                        for="file"
+                        ><i class="fas fa-camera"></i> Foto de perfil</label
+                    >
+                    <input
+                        #file
+                        class="profile__inputFile"
+                        type="file"
+                        accept="image/"
+                        id="file"
+                        formControlName="foto_perfil"
+                        (change)="preview(file.files)"
+                    />
+                    <button
+                        class="userNavigation__myButton btn btn-success"
+                        (click)="userUpdate()"
+                    >
+                        Cambiar foto de perfil
+                    </button>
+                </form>
+            </div>
             <img
+                *ngIf="!imgUrl && !userData?.foto_perfil"
                 class="userNavigation__defaultImage"
                 src="assets/images/user/default_user.png"
                 alt="default_user.png"
             />
-            <span>Nombre</span>
+            <img
+                *ngIf="!imgUrl && userData?.foto_perfil"
+                class="userNavigation__defaultImage"
+                [src]="userData.foto_perfil"
+                alt="default_user.png"
+            />
+            <img
+                *ngIf="imgUrl"
+                class="profile__imagePreview"
+                [src]="imgUrl"
+                alt="preview"
+            />
+            <h1 class="userNavigation__nameTitle">{{ userData.username }}</h1>
         </div>
         <nav
             class="
@@ -19,7 +60,8 @@
                 <a
                     class="navbar-brand userNavigation__myNavLetters"
                     (click)="activateRoute(0)"
-                    >Tutoriales</a
+                >
+                    mis cursos</a
                 >
                 <a
                     class="navbar-brand userNavigation__myNavLetters"

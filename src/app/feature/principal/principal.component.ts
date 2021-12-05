@@ -9,6 +9,7 @@ import { UsersService } from 'src/app/core/services/users/users.service';
 })
 export class PrincipalComponent implements OnInit {
     isAuthenticated!: boolean;
+    tokenIsClear!: boolean;
     constructor(
         private userService: UsersService,
         private spinner: NgxSpinnerService
@@ -16,6 +17,7 @@ export class PrincipalComponent implements OnInit {
 
     ngOnInit(): void {
         this.authenticatedConfirm();
+        this.tokenIsClear = false;
     }
     authenticatedConfirm(): void {
         this.isAuthenticated = this.userService.isAuthenticated();
@@ -28,11 +30,13 @@ export class PrincipalComponent implements OnInit {
                 this.spinner.hide();
                 this.isAuthenticated = false;
                 localStorage.clear();
+                this.tokenIsClear = true;
             },
             (err) => {
                 this.spinner.hide();
                 this.isAuthenticated = false;
                 localStorage.clear();
+                // sleep(100);
             }
         );
     }

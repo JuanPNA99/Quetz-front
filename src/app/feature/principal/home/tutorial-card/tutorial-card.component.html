@@ -2,10 +2,17 @@
     <div class="card__profile">
         <div class="card__avatarContainer">
             <img
+                *ngIf="data.autor.foto_perfil != null"
                 class="card__avatar"
-                src="assets/images/user/avatar.jpg"
-                alt="pancho"
+                [src]="data.autor.foto_perfil"
+                alt="foto_perfil"
             />
+            <span class="card__defaultImage">
+                <i
+                    *ngIf="data.autor.foto_perfil == null"
+                    class="card__avatar fas fa-user fa-2x"
+                ></i
+            ></span>
         </div>
         <div class="card__profileInformation">
             <div class="card__profilePrimeInfo">

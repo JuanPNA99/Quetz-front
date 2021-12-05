@@ -209,7 +209,11 @@
                                 alt="engranaje.png"
                             />Configuración
                         </button>
-                        <button ngbDropdownItem (click)="logout()">
+                        <button
+                            ngbDropdownItem
+                            (click)="logout()"
+                            [routerLink]="tokenIsClear == true ? ['/home'] : []"
+                        >
                             <img
                                 class="navbarMine__itemDropDown"
                                 src="assets/images/navbar/cerrar-sesion.png"
