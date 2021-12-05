@@ -7,6 +7,12 @@
                     src="assets/images/user/avatar.jpg"
                     alt="avatar"
                 />
+                <span class="card__defaultImage">
+                    <i
+                        *ngIf="tutorialData.autor.foto_perfil == null"
+                        class="card__avatar fas fa-user fa-2x"
+                    ></i
+                ></span>
             </div>
             <div class="tutorial__accountInformation">
                 <div class="tutorial__accountContainerInformation">

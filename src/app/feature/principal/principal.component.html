@@ -5,49 +5,50 @@
     type="ball-clip-rotate"
     [fullScreen]="true"
 ></ngx-spinner>
+<div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="myModal modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Estamos trabajando en mejorar tu experiencia
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                Esta funcionalidad estara displonible en proximas versiones
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="
+                        navbarMine__modalButton
+                        btn btn-secondary
+                        navbarMine__btnModalPrimaryColor
+                    "
+                    data-bs-dismiss="modal"
+                >
+                    Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbarMine">
     <!-- <a class="navbar-brand" 
     ><img class="navbarMine__item" src="assets/images/navbar/Quetz2.png" alt=""
   /></a> -->
-    <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-    >
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        Estamos trabajando en mejorar tu experiencia
-                    </h5>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
-                </div>
-                <div class="modal-body">
-                    Esta funcionalidad estara displonible en proximas versiones
-                </div>
-                <div class="modal-footer">
-                    <button
-                        type="button"
-                        class="
-                            navbarMine__modalButton
-                            btn btn-secondary
-                            navbarMine__btnModalPrimaryColor
-                        "
-                        data-bs-dismiss="modal"
-                    >
-                        Ok
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <button
         class="navbar-toggler"
         type="button"
@@ -71,7 +72,7 @@
             </li>
             <li
                 class="nav-item navbarMine__navItem"
-                routerLink="./auth/signup"
+                routerLink="/home"
                 [routerLinkActive]="'active'"
                 *ngIf="!isAuthenticated"
             >
@@ -209,11 +210,7 @@
                                 alt="engranaje.png"
                             />Configuración
                         </button>
-                        <button
-                            ngbDropdownItem
-                            (click)="logout()"
-                            [routerLink]="tokenIsClear == true ? ['/home'] : []"
-                        >
+                        <button ngbDropdownItem (click)="logout()">
                             <img
                                 class="navbarMine__itemDropDown"
                                 src="assets/images/navbar/cerrar-sesion.png"

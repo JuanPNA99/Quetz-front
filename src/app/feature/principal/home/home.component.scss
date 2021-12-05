@@ -2,10 +2,14 @@
     display: flex;
     margin: 0;
     padding: 0;
+    padding-top: 99px;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    height: auto;
     &__container_1 {
+        position: sticky;
+        top: -1px;
         display: flex;
         width: 20%;
         min-height: calc(100vh - 90px);
@@ -28,6 +32,8 @@
         gap: 2rem;
     }
     &__container_3 {
+        position: sticky;
+        top: -1px;
         display: flex;
         width: 20%;
         min-height: calc(100vh - 90px);
