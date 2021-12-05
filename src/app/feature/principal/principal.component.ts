@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
@@ -12,7 +13,8 @@ export class PrincipalComponent implements OnInit {
     tokenIsClear!: boolean;
     constructor(
         private userService: UsersService,
-        private spinner: NgxSpinnerService
+        private spinner: NgxSpinnerService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -31,12 +33,13 @@ export class PrincipalComponent implements OnInit {
                 this.isAuthenticated = false;
                 localStorage.clear();
                 this.tokenIsClear = true;
+                this.router.navigate(['/home']);
             },
             (err) => {
                 this.spinner.hide();
                 this.isAuthenticated = false;
                 localStorage.clear();
-                // sleep(100);
+                this.router.navigate(['/home']);
             }
         );
     }
