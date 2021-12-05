@@ -117,7 +117,7 @@
         </div>
         <div
             class="steps"
-            formArrayName="steps"
+            formArrayName="paso_Tutorial"
             *ngFor="let step of stepsArray.controls; let i = index"
         >
             <div [formGroupName]="i">
@@ -126,12 +126,12 @@
                         class="mb-3 steps__input"
                         [ngClass]="{
                             'steps__input--extra':
-                                stepsArray.value[i].imagen ||
+                                stepsArray.value[i].imagenURL ||
                                 stepsArray.value[i].adjunto,
                             'steps__input--original':
-                                (stepsArray.value[i].imagen &&
+                                (stepsArray.value[i].imagenURL &&
                                     stepsArray.value[i].adjunto) ||
-                                (!stepsArray.value[i].imagen &&
+                                (!stepsArray.value[i].imagenURL &&
                                     !stepsArray.value[i].adjunto)
                         }"
                     >
@@ -163,11 +163,11 @@
                     </div>
                     <figure
                         class="tutorial__imageContainer"
-                        *ngIf="stepsArray.value[i].imagen"
+                        *ngIf="stepsArray.value[i].imagenURL"
                     >
                         <img
                             class="tutorial__imagePreview"
-                            [src]="stepsArray.value[i].imagen"
+                            [src]="stepsArray.value[i].imagenURL"
                             alt="image_{{ stepsArray.value[i].numero_paso }}"
                         />
                     </figure>
@@ -236,7 +236,7 @@
             <button
                 type="button"
                 class="btn btn-success tutorial__buttonCreate"
-                (click)="createTutorial()"
+                (click)="postTutorial()"
                 [disabled]="!formTutorial.valid"
             >
                 Crear tutorial

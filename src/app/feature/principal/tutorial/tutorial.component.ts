@@ -7,6 +7,7 @@ import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LinkModalComponent } from './link-modal/link-modal.component';
+import { TutorialService } from 'src/app/core/services/tutorial/tutorial.service';
 
 @Component({
     selector: 'app-tutorial',
@@ -27,7 +28,8 @@ export class TutorialComponent implements OnInit {
         private spinner: NgxSpinnerService,
         private sanitizer: DomSanitizer,
         private router: Router,
-        private modalService: NgbModal
+        private modalService: NgbModal,
+        private tutorialService: TutorialService
     ) {}
 
     ngOnInit() {
@@ -42,24 +44,26 @@ export class TutorialComponent implements OnInit {
     buildFormTutorial(): void {
         this.formTutorial = this.formBuilder.group({
             titulo: ['', [Validators.required]],
-            banner: ['', [Validators.required]],
+            banner: [null, [Validators.required]],
             descripcion: ['', [Validators.required]],
             nivel: ['', [Validators.required]],
             sensible: [false],
-            steps: this.formBuilder.array([this.createStep(1)]),
+            temas_tutorial: ['2'],
+            paso_Tutorial: this.formBuilder.array([this.createStep(1)]),
         });
     }
 
     get stepsArray(): FormArray {
-        return this.formTutorial.get('steps') as FormArray;
+        return this.formTutorial.get('paso_Tutorial') as FormArray;
     }
 
     createStep(stepNumber: number): FormGroup {
         return this.formBuilder.group({
             numero_paso: [stepNumber, [Validators.required]],
             descripcion: ['', [Validators.required]],
-            imagen: [''],
-            adjunto: [''],
+            imagen: [null],
+            adjunto: [null],
+            imagenURL: [''],
         });
     }
 
@@ -83,6 +87,9 @@ export class TutorialComponent implements OnInit {
         reader.onload = (_event) => {
             this.imgUrl = reader.result;
         };
+        this.formTutorial.patchValue({
+            banner: file[0],
+        });
     }
 
     addStepImage(event: any, step: number): void {
@@ -95,9 +102,12 @@ export class TutorialComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (_event) => {
             this.stepsArray.at(step).patchValue({
-                imagen: reader.result,
+                imagenURL: reader.result,
             });
         };
+        this.stepsArray.at(step).patchValue({
+            imagen: event.target.files[0],
+        });
     }
 
     addYoutubeLink(step: any): void {
@@ -119,12 +129,12 @@ export class TutorialComponent implements OnInit {
     }
 
     addStep(step: any): void {
-        this.formSteps = this.formTutorial.get('steps') as FormArray;
+        this.formSteps = this.formTutorial.get('paso_Tutorial') as FormArray;
         this.formSteps.push(this.createStep(step + 2));
     }
 
     removeStep(step: any): void {
-        this.formSteps = this.formTutorial.get('steps') as FormArray;
+        this.formSteps = this.formTutorial.get('paso_Tutorial') as FormArray;
         this.formSteps.removeAt(step);
     }
 
@@ -137,9 +147,37 @@ export class TutorialComponent implements OnInit {
                 this.router.navigate(['/']);
             }, 3000);
         }, 1200);
+        console.log(this.formTutorial.value);
     }
 
     imageLoaded(event: any): void {
         this.hideSpinner('sp-image');
+    }
+
+    postTutorial() {
+        const formData = new FormData();
+        Object.keys(this.formTutorial.value).forEach((key) => {
+            let value = this.formTutorial.get(key)?.value;
+
+            if (key === 'paso_Tutorial') {
+                value = this.stepsArray.value as Array<any>;
+                value.forEach((step: any, i: number) => {
+                    delete step.imagenURL;
+                    Object.keys(step).forEach((key) => {
+                        if (step[key])
+                            formData.append(
+                                `paso_Tutorial[${i}]${key}`,
+                                step[key]
+                            );
+                    });
+                });
+            } else formData.append(key, value);
+        });
+        // formData.forEach((value) => {
+        //     console.log(value);
+        // });
+        this.tutorialService.postTutorial(formData).subscribe((data) => {
+            console.log(data);
+        });
     }
 }

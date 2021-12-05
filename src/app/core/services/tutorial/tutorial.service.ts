@@ -27,4 +27,11 @@ export class TutorialService {
             environment.API_URL + this.URL_PATH + `${id}`
         );
     }
+
+    postTutorial(formData: any) {
+        return this.http.post<any>(
+            environment.API_URL + this.URL_PATH,
+            formData
+        );
+    }
 }
