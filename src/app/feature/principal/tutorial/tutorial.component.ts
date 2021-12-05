@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LinkModalComponent } from './link-modal/link-modal.component';
 import { TutorialService } from 'src/app/core/services/tutorial/tutorial.service';
+import { ThemeService } from 'src/app/core/services/theme/theme.service';
 
 @Component({
     selector: 'app-tutorial',
@@ -19,6 +20,7 @@ export class TutorialComponent implements OnInit {
     formSteps!: FormArray;
     imgUrl!: any;
     safeUrl!: string;
+    themeData!: any[];
 
     @ViewChild('successTutorial')
     readonly successTutorial!: SwalComponent;
@@ -29,16 +31,29 @@ export class TutorialComponent implements OnInit {
         private sanitizer: DomSanitizer,
         private router: Router,
         private modalService: NgbModal,
-        private tutorialService: TutorialService
+        private tutorialService: TutorialService,
+        private themeService: ThemeService
     ) {}
 
     ngOnInit() {
         this.showSpinner('sp-image');
         this.buildFormTutorial();
+        this.getThemes();
     }
 
     async triggerSwalComponent() {
         this.successTutorial.fire();
+    }
+
+    getThemes(): void {
+        this.themeService.getThemes().subscribe(
+            (res) => {
+                this.themeData = res;
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
     }
 
     buildFormTutorial(): void {
@@ -48,7 +63,7 @@ export class TutorialComponent implements OnInit {
             descripcion: ['', [Validators.required]],
             nivel: ['', [Validators.required]],
             sensible: [false],
-            temas_tutorial: ['2'],
+            temas_tutorial: ['', [Validators.required]],
             paso_Tutorial: this.formBuilder.array([this.createStep(1)]),
         });
     }

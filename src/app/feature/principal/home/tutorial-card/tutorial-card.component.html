@@ -10,16 +10,22 @@
         <div class="card__profileInformation">
             <div class="card__profilePrimeInfo">
                 <div class="card__account">
-                    <span class="card__name">{{ data.name }}&nbsp;</span>
+                    <span class="card__name"
+                        >{{ data.autor.username }}&nbsp;</span
+                    >
                     <span class="card__circle">&#11044;</span>
                     <span class="card__follow">&nbsp;Seguir</span>
                 </div>
                 <div class="card__likes">
-                    <span class="card__likesNumber">80</span>
+                    <span class="card__likesNumber">{{
+                        data.plumas_tutoriales.length
+                    }}</span>
                     <i class="fas fa-feather-alt card__likesIcon"></i>
                 </div>
             </div>
-            <span class="card__date">14/09</span>
+            <span class="card__date">{{
+                data.fecha_creacion | date: "fullDate"
+            }}</span>
         </div>
     </div>
     <div class="card__content">

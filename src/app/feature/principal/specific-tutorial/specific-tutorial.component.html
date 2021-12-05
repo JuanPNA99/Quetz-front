@@ -11,16 +11,20 @@
             <div class="tutorial__accountInformation">
                 <div class="tutorial__accountContainerInformation">
                     <div class="tutorial__accountName">
-                        JuanP&nbsp;
+                        {{ tutorialData?.autor.username }}&nbsp;
                         <span class="tutorial__circle">&#11044;</span>
                         <span class="tutorial__follow">&nbsp;Seguir</span>
                     </div>
                     <div class="tutorial__likes">
-                        <span class="tutorial__likesNumber">80</span>
+                        <span class="tutorial__likesNumber">{{
+                            tutorialData.plumas_tutoriales.length
+                        }}</span>
                         <i class="fas fa-feather-alt tutorial__likesIcon"></i>
                     </div>
                 </div>
-                <div class="tutorial__accountDate">14/09</div>
+                <div class="tutorial__accountDate">
+                    {{ tutorialData.fecha_creacion | date: "fullDate" }}
+                </div>
             </div>
         </div>
         <div class="tutorial__header">
@@ -37,7 +41,10 @@
                         }}</span>
                     </div>
                     <div class="tutorial__theme">
-                        Tema: <span class="tutorial__themeType">Cocina</span>
+                        Tema:
+                        <span class="tutorial__themeType">{{
+                            tutorialData?.temas_tutorial[0].nombre_tema
+                        }}</span>
                     </div>
                 </div>
             </div>

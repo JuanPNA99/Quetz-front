@@ -101,7 +101,7 @@
                 </div>
                 <div>
                     <select
-                        class="form-select"
+                        class="tutorial__cssSelect form-select"
                         aria-label="level"
                         formControlName="nivel"
                     >
@@ -111,6 +111,22 @@
                         <option value="bas">Básico</option>
                         <option value="med">Intermedio</option>
                         <option value="adv">Avanzado</option>
+                    </select>
+
+                    <select
+                        class="tutorial__cssSelect form-select"
+                        aria-label="level"
+                        formControlName="temas_tutorial"
+                    >
+                        <option selected value="">
+                            ¿De que tema es este tutorial?
+                        </option>
+                        <option
+                            *ngFor="let theme of themeData"
+                            value="{{ theme.id }}"
+                        >
+                            {{ theme.nombre_tema }}
+                        </option>
                     </select>
                 </div>
             </div>

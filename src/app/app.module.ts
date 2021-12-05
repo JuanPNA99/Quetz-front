@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -13,6 +13,10 @@ import { HttpInterceptorProviders } from './core/interceptor/http-interceptors';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs, 'es');
+
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -25,7 +29,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
         NgxSpinnerModule,
         SweetAlert2Module.forRoot(),
     ],
-    providers: [HttpInterceptorProviders],
+    providers: [
+        HttpInterceptorProviders,
+        { provide: LOCALE_ID, useValue: 'es' },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
