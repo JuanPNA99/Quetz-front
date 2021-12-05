@@ -137,6 +137,15 @@
                             id="userName"
                             formControlName="username"
                         />
+                        <span
+                            *ngIf="
+                                formRegister.get('username')?.touched &&
+                                formRegister.get('username')?.errors
+                            "
+                            class="register__errorFeedback"
+                        >
+                            Este campo debe tener mínimo 8 caracteres
+                        </span>
                     </div>
                     <label for="exampleInputEmail1" class="form-label"
                         >Correo electronico</label
@@ -148,6 +157,24 @@
                         aria-describedby="emailHelp"
                         formControlName="email"
                     />
+                    <span
+                        *ngIf="
+                            formRegister.get('email')?.touched &&
+                            formRegister.get('email')?.hasError('email')
+                        "
+                        class="register__errorFeedback"
+                    >
+                        Correo electrónico no válido
+                    </span>
+                    <span
+                        *ngIf="
+                            formRegister.get('email')?.touched &&
+                            formRegister.get('email')?.hasError('required')
+                        "
+                        class="register__errorFeedback"
+                    >
+                        Este campo es obligatorio
+                    </span>
                     <div class="mb-3">
                         <label for="password1" class="form-label"
                             >Contraseña</label

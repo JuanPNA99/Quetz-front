@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UsersService } from 'src/app/core/services/users/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-register',
@@ -50,8 +51,13 @@ export class RegisterComponent implements OnInit {
             },
             (error) => {
                 this.spinner.hide();
-                this.triggerSwalComponent();
+                // this.triggerSwalComponent();
                 console.log(error);
+                Swal.fire({
+                    title: `Error ${error.status}`,
+                    icon: 'error',
+                    text: `${JSON.stringify(error.error)}`,
+                });
             }
         );
     }
