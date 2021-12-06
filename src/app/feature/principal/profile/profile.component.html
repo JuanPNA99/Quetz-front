@@ -30,7 +30,7 @@
                 </form>
             </div>
             <img
-                *ngIf="!imgUrl && !userData?.foto_perfil"
+                *ngIf="!imgUrl && userData?.foto_perfil == null"
                 class="userNavigation__defaultImage"
                 src="assets/images/user/default_user.png"
                 alt="default_user.png"
@@ -43,7 +43,7 @@
             />
             <img
                 *ngIf="imgUrl"
-                class="profile__imagePreview"
+                class="userNavigation__defaultImage profile__imagePreview"
                 [src]="imgUrl"
                 alt="preview"
             />

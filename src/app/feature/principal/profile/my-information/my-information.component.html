@@ -1,4 +1,9 @@
-<form class="info" action="">
+<form
+    class="info"
+    action=""
+    [formGroup]="formUser"
+    (keydown.enter)="$event.preventDefault()"
+>
     <div class="info__changeButtonContainer">
         <button
             *ngIf="infoMod != true"
@@ -28,6 +33,7 @@
                 type="text"
                 id="institucion_educativa"
                 placeholder="Tu institución"
+                formControlName="institucion_educativa"
             />
         </label>
         <p
@@ -51,7 +57,12 @@
         />
         <label *ngIf="infoMod == true" for="nombre">
             <span>¿Cuál es tu facebook?</span><br />
-            <input type="url" id="nombre" placeholder="Tu cuenta de facebook" />
+            <input
+                type="url"
+                id="nombre"
+                placeholder="Tu cuenta de facebook"
+                formControlName="facebookurl"
+            />
         </label>
         <p
             *ngIf="infoMod != true && userData.facebookurl"
@@ -74,16 +85,21 @@
         />
         <label *ngIf="infoMod == true" for="nombre">
             <span>¿Qué idiomas manejas?</span><br />
-            <input type="text" id="nombre" placeholder="Tus idiomas" />
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Tus idiomas"
+                formControlName="idiomas"
+            />
         </label>
         <p
-            *ngIf="infoMod != true && userData.idiomas"
+            *ngIf="infoMod != true && userData.idiomas != []"
             class="info__description"
         >
             {{ userData.idiomas }}
         </p>
         <p
-            *ngIf="infoMod != true && !userData.idiomas"
+            *ngIf="infoMod != true && userData.idiomas == []"
             class="info__description"
         >
             Idiomas
@@ -97,7 +113,12 @@
         />
         <label *ngIf="infoMod == true" for="nombre">
             <span>¿Cuál es tu instagram?</span><br />
-            <input type="text" id="nombre" placeholder="Tu Instagram" />
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Tu Instagram"
+                formControlName="instagramurl"
+            />
         </label>
         <p
             *ngIf="infoMod != true && userData.instagramurl"
@@ -120,7 +141,12 @@
         />
         <label *ngIf="infoMod == true" for="nombre">
             <span>¿De donde eres?</span><br />
-            <input type="url" id="nombre" placeholder="Tu País" />
+            <input
+                type="url"
+                id="nombre"
+                placeholder="Tu País"
+                formControlName="ubicacion"
+            />
         </label>
         <p
             *ngIf="infoMod != true && userData.ubicacion"
@@ -143,7 +169,12 @@
         />
         <label *ngIf="infoMod == true" for="nombre">
             <span>¿Cuál es tu instagram?</span><br />
-            <input type="text" id="nombre" placeholder="Tu instagram" />
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Tu instagram"
+                formControlName="instagramurl"
+            />
         </label>
         <p
             *ngIf="infoMod != true && userData.twitterurl"
@@ -176,7 +207,12 @@
         />
         <label *ngIf="infoMod == true" for="nombre">
             <span>¿Cuál es tu Youtube?</span><br />
-            <input type="text" id="nombre" placeholder="Tu Youtube" />
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Tu Youtube"
+                formControlName="youtubeurl"
+            />
         </label>
         <p
             *ngIf="infoMod != true && userData.youtubeurl"
@@ -192,6 +228,12 @@
         </p>
     </div>
     <div class="info__upgradeButtonContainer">
-        <button class="btn btn-success">Actualizar Información</button>
+        <button
+            *ngIf="infoMod == true"
+            class="btn btn-success"
+            (click)="userUpdate(formUser.value)"
+        >
+            Actualizar Información
+        </button>
     </div>
 </form>
