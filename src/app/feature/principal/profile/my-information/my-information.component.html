@@ -1,50 +1,197 @@
-<div class="info">
+<form class="info" action="">
+    <div class="info__changeButtonContainer">
+        <button
+            *ngIf="infoMod != true"
+            class="btn btn-success"
+            (click)="modify()"
+        >
+            Modificar información &nbsp; <i class="fas fa-pencil-alt"></i>
+        </button>
+        <button
+            *ngIf="infoMod == true"
+            class="btn btn-success"
+            (click)="cancelModify()"
+        >
+            Cancelar &nbsp; <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <div class="info__row">
         <img
             class="info__icon"
             src="assets/images/navbar/graduado.png"
-            alt=""
+            alt="graduado.png"
         />
-        <p class="info__description">Institución educativa</p>
+        <label *ngIf="infoMod == true" for="institucion_educativa">
+            <span>¿Donde estudiaste?</span><br />
+            <input
+                type="text"
+                id="institucion_educativa"
+                placeholder="Tu institución"
+            />
+        </label>
+        <p
+            *ngIf="infoMod != true && userData.institucion_educativa"
+            class="info__description"
+        >
+            {{ userData.institucion_educativa }}
+        </p>
+        <p
+            *ngIf="infoMod != true && !userData.institucion_educativa"
+            class="info__description"
+        >
+            institucion Educativa
+        </p>
     </div>
     <div class="info__row">
         <img
             class="info__icon"
             src="assets/images/navbar/facebook.png"
-            alt=""
+            alt="facebook.png"
         />
-        <p class="info__description">Facebook</p>
+        <label *ngIf="infoMod == true" for="nombre">
+            <span>¿Cuál es tu facebook?</span><br />
+            <input type="url" id="nombre" placeholder="Tu cuenta de facebook" />
+        </label>
+        <p
+            *ngIf="infoMod != true && userData.facebookurl"
+            class="info__description"
+        >
+            {{ userData.facebookurl }}
+        </p>
+        <p
+            *ngIf="infoMod != true && !userData.facebookurl"
+            class="info__description"
+        >
+            Facebook
+        </p>
     </div>
     <div class="info__row">
-        <img class="info__icon" src="assets/images/navbar/idiomas.png" alt="" />
-        <p class="info__description">Idiomas</p>
+        <img
+            class="info__icon"
+            src="assets/images/navbar/idiomas.png"
+            alt="idiomas.png"
+        />
+        <label *ngIf="infoMod == true" for="nombre">
+            <span>¿Qué idiomas manejas?</span><br />
+            <input type="text" id="nombre" placeholder="Tus idiomas" />
+        </label>
+        <p
+            *ngIf="infoMod != true && userData.idiomas"
+            class="info__description"
+        >
+            {{ userData.idiomas }}
+        </p>
+        <p
+            *ngIf="infoMod != true && !userData.idiomas"
+            class="info__description"
+        >
+            Idiomas
+        </p>
     </div>
     <div class="info__row">
         <img
             class="info__icon"
             src="assets/images/navbar/instagram.png"
-            alt=""
+            alt="instagram.png"
         />
-        <p class="info__description">Instagram</p>
+        <label *ngIf="infoMod == true" for="nombre">
+            <span>¿Cuál es tu instagram?</span><br />
+            <input type="text" id="nombre" placeholder="Tu Instagram" />
+        </label>
+        <p
+            *ngIf="infoMod != true && userData.instagramurl"
+            class="info__description"
+        >
+            {{ userData.instagramurl }}
+        </p>
+        <p
+            *ngIf="infoMod != true && !userData.instagramurl"
+            class="info__description"
+        >
+            Instagram
+        </p>
     </div>
     <div class="info__row">
-        <img class="info__icon" src="assets/images/navbar/mapa.png" alt="" />
-        <p class="info__description">Residencia</p>
+        <img
+            class="info__icon"
+            src="assets/images/navbar/mapa.png"
+            alt="mapa.png"
+        />
+        <label *ngIf="infoMod == true" for="nombre">
+            <span>¿De donde eres?</span><br />
+            <input type="url" id="nombre" placeholder="Tu País" />
+        </label>
+        <p
+            *ngIf="infoMod != true && userData.ubicacion"
+            class="info__description"
+        >
+            {{ userData.ubicacion }}
+        </p>
+        <p
+            *ngIf="infoMod != true && !userData.ubicacion"
+            class="info__description"
+        >
+            Residencia
+        </p>
     </div>
     <div class="info__row">
-        <img class="info__icon" src="assets/images/navbar/gorjeo.png" alt="" />
-        <p class="info__description">Twitter</p>
+        <img
+            class="info__icon"
+            src="assets/images/navbar/gorjeo.png"
+            alt="twitter.png"
+        />
+        <label *ngIf="infoMod == true" for="nombre">
+            <span>¿Cuál es tu instagram?</span><br />
+            <input type="text" id="nombre" placeholder="Tu instagram" />
+        </label>
+        <p
+            *ngIf="infoMod != true && userData.twitterurl"
+            class="info__description"
+        >
+            {{ userData.twitterurl }}
+        </p>
+        <p
+            *ngIf="infoMod != true && !userData.twitterurl"
+            class="info__description"
+        >
+            Twitter
+        </p>
     </div>
     <div class="info__row">
         <img
             class="info__icon"
             src="assets/images/navbar/calendario.png"
-            alt=""
+            alt="calendario.png"
         />
-        <p class="info__description">Fecha de ingreso</p>
+        <p class="info__description">
+            {{ userData.fecha_registro | date: "fullDate" }}
+        </p>
     </div>
     <div class="info__row">
-        <img class="info__icon" src="assets/images/navbar/youtube.png" alt="" />
-        <p class="info__description">Youtube</p>
+        <img
+            class="info__icon"
+            src="assets/images/navbar/youtube.png"
+            alt="youtube.png"
+        />
+        <label *ngIf="infoMod == true" for="nombre">
+            <span>¿Cuál es tu Youtube?</span><br />
+            <input type="text" id="nombre" placeholder="Tu Youtube" />
+        </label>
+        <p
+            *ngIf="infoMod != true && userData.youtubeurl"
+            class="info__description"
+        >
+            {{ userData.youtubeurl }}
+        </p>
+        <p
+            *ngIf="infoMod != true && !userData.youtubeurl"
+            class="info__description"
+        >
+            Youtube
+        </p>
     </div>
-</div>
+    <div class="info__upgradeButtonContainer">
+        <button class="btn btn-success">Actualizar Información</button>
+    </div>
+</form>

@@ -185,25 +185,21 @@
                                 alt="graduado.png"
                             />Perfil
                         </button>
-                        <button
-                            ngbDropdownItem
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >
+                        <button ngbDropdownItem (click)="workingAlert()">
                             <img
                                 class="navbarMine__itemDropDown"
                                 src="assets/images/navbar/mundo.png"
                                 alt="mundo.png"
                             />Idioma
                         </button>
-                        <button ngbDropdownItem>
+                        <button ngbDropdownItem (click)="workingAlert()">
                             <img
                                 class="navbarMine__itemDropDown"
                                 src="assets/images/navbar/pregunta.png"
                                 alt="pregunta.png"
                             />Envíanos un comentario
                         </button>
-                        <button ngbDropdownItem>
+                        <button ngbDropdownItem (click)="workingAlert()">
                             <img
                                 class="navbarMine__itemDropDown"
                                 src="assets/images/navbar/engranaje.png"

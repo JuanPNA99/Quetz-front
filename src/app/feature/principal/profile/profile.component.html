@@ -38,7 +38,7 @@
             <img
                 *ngIf="!imgUrl && userData?.foto_perfil"
                 class="userNavigation__defaultImage"
-                [src]="userData.foto_perfil"
+                [src]="userData?.foto_perfil"
                 alt="default_user.png"
             />
             <img
@@ -47,7 +47,7 @@
                 [src]="imgUrl"
                 alt="preview"
             />
-            <h1 class="userNavigation__nameTitle">{{ userData.username }}</h1>
+            <h1 class="userNavigation__nameTitle">{{ userData?.username }}</h1>
         </div>
         <nav
             class="
@@ -61,7 +61,7 @@
                     class="navbar-brand userNavigation__myNavLetters"
                     (click)="activateRoute(0)"
                 >
-                    mis cursos</a
+                    Mis cursos</a
                 >
                 <a
                     class="navbar-brand userNavigation__myNavLetters"
@@ -78,7 +78,10 @@
     </div>
     <div class="content">
         <app-mytutorials *ngIf="currentView === 0"></app-mytutorials>
-        <app-my-information *ngIf="currentView === 1"></app-my-information>
+        <app-my-information
+            *ngIf="currentView === 1"
+            [userData]="userData"
+        ></app-my-information>
         <app-my-followers *ngIf="currentView === 2"></app-my-followers>
     </div>
 </section>

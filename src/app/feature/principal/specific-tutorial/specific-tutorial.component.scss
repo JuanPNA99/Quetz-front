@@ -104,7 +104,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        aspect-ratio: 1;
         width: 40%;
         height: auto;
         position: relative;
@@ -144,7 +143,6 @@
         align-items: flex-start;
         padding-top: 1rem;
         width: 100%;
-        aspect-ratio: 16/9;
         height: auto;
     }
     &__image {

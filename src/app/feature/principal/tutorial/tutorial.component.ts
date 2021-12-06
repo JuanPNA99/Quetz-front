@@ -10,6 +10,8 @@ import { LinkModalComponent } from './link-modal/link-modal.component';
 import { TutorialService } from 'src/app/core/services/tutorial/tutorial.service';
 import { ThemeService } from 'src/app/core/services/theme/theme.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
     selector: 'app-tutorial',
     templateUrl: './tutorial.component.html',
@@ -191,8 +193,25 @@ export class TutorialComponent implements OnInit {
         // formData.forEach((value) => {
         //     console.log(value);
         // });
-        this.tutorialService.postTutorial(formData).subscribe((data) => {
-            console.log(data);
-        });
+        this.tutorialService.postTutorial(formData).subscribe(
+            (data) => {
+                Swal.fire({
+                    title: 'Tutorial realizado con exito',
+                    icon: 'success',
+                });
+                setTimeout(() => {
+                    this.router.navigate(['/home']);
+                }, 3000);
+            },
+            (error) => {
+                Swal.fire({
+                    title: 'Hubo un problema',
+                    icon: 'error',
+                });
+                setTimeout(() => {
+                    this.router.navigate(['/home']);
+                }, 3000);
+            }
+        );
     }
 }

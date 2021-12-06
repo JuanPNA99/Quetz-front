@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
     selector: 'app-my-information',
@@ -6,7 +7,19 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./my-information.component.scss'],
 })
 export class MyInformationComponent implements OnInit {
-    constructor() {}
+    @Input() userData!: any;
+    infoMod: boolean = false;
+    constructor(private usersService: UsersService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        console.log(this.infoMod);
+    }
+
+    modify() {
+        this.infoMod = true;
+    }
+
+    cancelModify() {
+        this.infoMod = false;
+    }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UsersService } from 'src/app/core/services/users/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-principal',
@@ -42,5 +43,13 @@ export class PrincipalComponent implements OnInit {
                 this.router.navigate(['/home']);
             }
         );
+    }
+
+    workingAlert() {
+        Swal.fire({
+            title: 'Estamos trabajando para mejorar tu experiencia',
+            icon: 'info',
+            text: 'Esta funcionalidad estará displonible en proximas versiones',
+        });
     }
 }
