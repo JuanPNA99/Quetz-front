@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
-  selector: 'app-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.scss']
+    selector: 'app-notifications',
+    templateUrl: './notifications.component.html',
+    styleUrls: ['./notifications.component.scss'],
 })
 export class NotificationsComponent implements OnInit {
+    notificationsData!: any;
+    constructor(private usersService: UsersService) {}
 
-  constructor() { }
+    ngOnInit() {
+        this.getNotifications();
+    }
 
-  ngOnInit() {
-  }
-
+    getNotifications(): void {
+        this.usersService.getNotifications().subscribe(
+            (res) => {
+                this.notificationsData = res;
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
 }

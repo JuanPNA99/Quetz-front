@@ -54,4 +54,10 @@ export class UsersService {
             formData
         );
     }
+
+    getNotifications() {
+        return this.http.get<any>(
+            environment.API_URL + this.URL_PATH + 'notifications/'
+        );
+    }
 }

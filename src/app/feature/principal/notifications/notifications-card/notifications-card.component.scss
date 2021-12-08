@@ -5,6 +5,7 @@
     align-items: flex-start;
     padding: 1rem 0.5rem;
     padding-bottom: 0.1rem;
+    margin: 20px 0px;
     width: 100%;
     height: auto;
     background-color: #e8e8e4;
@@ -30,6 +31,14 @@
     &__avatar {
         width: 100%;
         height: 100%;
+        object-fit: cover;
+    }
+    &__defaultImage {
+        display: block;
+        width: 2.5rem;
+        height: 100%;
+        text-align: center;
+        line-height: 4rem;
     }
     &__profileInformation {
         display: flex;

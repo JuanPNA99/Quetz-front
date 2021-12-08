@@ -77,7 +77,10 @@
         </nav>
     </div>
     <div class="content">
-        <app-mytutorials *ngIf="currentView === 0"></app-mytutorials>
+        <app-mytutorials
+            [userData]="userData"
+            *ngIf="currentView === 0"
+        ></app-mytutorials>
         <app-my-information
             *ngIf="currentView === 1"
             [userData]="userData"

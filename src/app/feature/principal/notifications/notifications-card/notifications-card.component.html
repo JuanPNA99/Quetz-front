@@ -1,24 +1,43 @@
-<div class="card">
+<div
+    class="card"
+    *ngFor="
+        let notifications of notificationsData?.notificacioncreaciontutorial_set
+    "
+>
     <div class="card__profile">
         <div class="card__avatarContainer">
             <img
+                *ngIf="notifications.tutorial.autor.foto_perfil != null"
                 class="card__avatar"
-                src="assets/images/user/avatar.jpg"
-                alt="pancho"
+                [src]="notifications.tutorial.autor.foto_perfil"
+                alt="imagen.jpg"
             />
+            <span class="card__defaultImage">
+                <i
+                    *ngIf="notifications.tutorial.autor.foto_perfil == null"
+                    class="card__avatar fas fa-user fa-2x"
+                ></i
+            ></span>
         </div>
         <div class="card__profileInformation">
             <div class="card__profilePrimeInfo">
                 <div class="card__account">
-                    <span class="card__name">JuanP&nbsp;</span>
+                    <span class="card__name"
+                        >{{ notifications.tutorial.autor.username }}&nbsp;</span
+                    >
                 </div>
             </div>
         </div>
-        <p class="card__title">Ha hecho algo</p>
+        <p class="card__title">
+            Ha creado el tutorial: &nbsp;{{ notifications.tutorial.titulo }}
+        </p>
     </div>
     <div class="card__content">
         <div class="card__information">
-            <p class="card__description">Hace x tiempo</p>
+            <p class="card__description">
+                Creada el: &nbsp;
+                {{ notifications.fecha_notificacion | date: "fullDate" }}
+            </p>
         </div>
     </div>
 </div>
