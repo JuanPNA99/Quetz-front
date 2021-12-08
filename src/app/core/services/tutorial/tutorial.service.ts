@@ -34,4 +34,18 @@ export class TutorialService {
             formData
         );
     }
+
+    emplumar(formData: any) {
+        return this.http.post<any>(
+            environment.API_URL + this.URL_PATH + 'feathers/emplumar/',
+            formData
+        );
+    }
+
+    desplumar(formData: any) {
+        return this.http.post<any>(
+            environment.API_URL + this.URL_PATH + 'feathers/desplumar/',
+            formData
+        );
+    }
 }

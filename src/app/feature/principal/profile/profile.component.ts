@@ -30,14 +30,6 @@ export class ProfileComponent implements OnInit {
 
     buildFormUser(): void {
         this.formUser = this.formBuilder.group({
-            email: [''],
-            institucion_educativa: [''],
-            idiomas: [''],
-            ubicacion: [''],
-            facebookurl: [''],
-            twitterurl: [''],
-            youtubeurl: [''],
-            instagramurl: [''],
             foto_perfil: [null],
         });
     }

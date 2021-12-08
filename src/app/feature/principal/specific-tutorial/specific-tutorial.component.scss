@@ -75,10 +75,15 @@
     &__follow {
         color: #17a7fb;
         font-size: 1rem;
-        cursor: pointer;
     }
     &__likesIcon {
+        color: grey;
+    }
+    &__deletelikeIcon {
         color: green;
+        &:hover {
+            color: red;
+        }
     }
     &__header {
         display: flex;

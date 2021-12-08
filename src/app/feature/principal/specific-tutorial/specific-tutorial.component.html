@@ -21,6 +21,7 @@
                         {{ tutorialData?.autor.username }}&nbsp;
                         <span class="tutorial__circle">&#11044;</span>
                         <button
+                            *ngIf="getAuth()"
                             class="tutorial__followButton"
                             (click)="followUser()"
                         >
@@ -38,7 +39,32 @@
                         <span class="tutorial__likesNumber">{{
                             tutorialData?.plumas_tutoriales.length
                         }}</span>
-                        <i class="fas fa-feather-alt tutorial__likesIcon"></i>
+                        <button
+                            *ngIf="getAuth() && !this.variableEmplumado"
+                            class="tutorial__followButton"
+                            (click)="emplumar()"
+                        >
+                            <i
+                                class="fas fa-feather-alt tutorial__likesIcon"
+                            ></i>
+                        </button>
+                        <button
+                            *ngIf="getAuth() && this.variableEmplumado"
+                            class="tutorial__followButton"
+                            (click)="desplumar()"
+                        >
+                            <i
+                                class="
+                                    fas
+                                    fa-feather-alt
+                                    tutorial__deletelikeIcon
+                                "
+                            ></i>
+                        </button>
+                        <i
+                            *ngIf="!getAuth()"
+                            class="fas fa-feather-alt tutorial__likesIcon"
+                        ></i>
                     </div>
                 </div>
                 <div class="tutorial__accountDate">

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    FormArray,
+    FormBuilder,
+    FormGroup,
+    RequiredValidator,
+    Validators,
+} from '@angular/forms';
 import { TutorialService } from 'src/app/core/services/tutorial/tutorial.service';
 import { UsersService } from 'src/app/core/services/users/users.service';
 import { forkJoin } from 'rxjs';
@@ -17,6 +23,8 @@ export class SpecificTutorialComponent implements OnInit {
     userData!: any;
     formFollow!: FormGroup;
     following: boolean = false;
+    formFeather!: FormGroup;
+    variableEmplumado: boolean = false;
 
     constructor(
         private tutorialService: TutorialService,
@@ -35,7 +43,16 @@ export class SpecificTutorialComponent implements OnInit {
 
     buildFormFollow(): void {
         this.formFollow = this.formBuilder.group({
-            following_user_id: [this.tutorialData.autor.id],
+            following_user_id: [
+                this.tutorialData.autor.id,
+                Validators.required,
+            ],
+        });
+    }
+
+    buildFormFeather(): void {
+        this.formFeather = this.formBuilder.group({
+            tutorial: [this.tutorialData.id, Validators.required],
         });
     }
 
@@ -52,24 +69,48 @@ export class SpecificTutorialComponent implements OnInit {
         if (reallyfollowing) {
             this.following = true;
         }
-        console.log(reallyfollowing);
+    }
+
+    yaEmplumado() {
+        let reallyEmplumado!: any;
+        reallyEmplumado = this.tutorialData.plumas_tutoriales.find(
+            (element: any) => element === this.userData.id
+        );
+        if (reallyEmplumado) {
+            this.variableEmplumado = true;
+        } else {
+            this.variableEmplumado = false;
+        }
     }
 
     getPrimeInfo() {
-        forkJoin([
-            this.usersService.profile(),
-            this.tutorialService.getSpecificTutorial(this.id),
-        ]).subscribe(
-            (res) => {
-                this.userData = res[0];
-                this.tutorialData = res[1];
-                this.buildFormFollow();
-                this.followingFunction();
-            },
-            (err) => {
-                console.log(err);
-            }
-        );
+        if (!!localStorage.getItem('token')) {
+            forkJoin([
+                this.usersService.profile(),
+                this.tutorialService.getSpecificTutorial(this.id),
+            ]).subscribe(
+                (res) => {
+                    this.userData = res[0];
+                    this.tutorialData = res[1];
+                    this.buildFormFollow();
+                    this.buildFormFeather();
+                    this.followingFunction();
+                    this.yaEmplumado();
+                },
+                (err) => {
+                    console.log(err);
+                }
+            );
+        } else {
+            this.tutorialService.getSpecificTutorial(this.id).subscribe(
+                (res) => {
+                    this.tutorialData = res;
+                },
+                (err) => {
+                    console.log(err);
+                }
+            );
+        }
     }
 
     compare(a: any, b: any) {
@@ -90,10 +131,39 @@ export class SpecificTutorialComponent implements OnInit {
         this.hideSpinner('sp-tutorial');
     }
 
+    getAuth(): boolean {
+        return !!localStorage.getItem('token');
+    }
+
     followUser(): void {
         this.usersService.postFollow(this.formFollow.value).subscribe(
             (res) => {
                 console.log(res);
+                this.getPrimeInfo();
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
+
+    emplumar(): void {
+        this.tutorialService.emplumar(this.formFeather.value).subscribe(
+            (res) => {
+                console.log();
+                this.getPrimeInfo();
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
+
+    desplumar(): void {
+        this.tutorialService.desplumar(this.formFeather.value).subscribe(
+            (res) => {
+                console.log();
+                this.getPrimeInfo();
             },
             (err) => {
                 console.log(err);
