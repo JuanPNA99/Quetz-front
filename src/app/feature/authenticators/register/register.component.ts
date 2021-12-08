@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/core/services/users/users.service';
 import Swal from 'sweetalert2';
 
@@ -13,14 +14,14 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
     formRegister!: FormGroup;
     divRegister: boolean = true;
-    display: boolean = false;
 
     @ViewChild('errorLogin')
     errorLogin!: SwalComponent;
     constructor(
         private formBuilder: FormBuilder,
         private usersService: UsersService,
-        private spinner: NgxSpinnerService
+        private spinner: NgxSpinnerService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -46,8 +47,8 @@ export class RegisterComponent implements OnInit {
         this.usersService.postSignup(this.formRegister.value).subscribe(
             (res) => {
                 this.spinner.hide();
-                this.showTopics();
                 localStorage.setItem('token', res.access_token);
+                this.router.navigate(['/home']);
             },
             (error) => {
                 this.spinner.hide();
@@ -60,10 +61,5 @@ export class RegisterComponent implements OnInit {
                 });
             }
         );
-    }
-
-    showTopics() {
-        this.divRegister = false;
-        this.display = true;
     }
 }

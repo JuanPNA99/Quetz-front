@@ -19,4 +19,7 @@
             {{ follower.following_user_id.username }}
         </p>
     </div>
+    <span class="info__noFollowsSpan" *ngIf="userData?.following.length == 0"
+        >Aún no sigues a nadie</span
+    >
 </div>

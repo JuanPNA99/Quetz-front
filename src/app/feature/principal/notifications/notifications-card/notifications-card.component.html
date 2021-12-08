@@ -41,3 +41,27 @@
         </div>
     </div>
 </div>
+
+<div
+    class="card"
+    *ngIf="notificationsData?.notificacioncreaciontutorial_set.length == 0"
+>
+    <div class="card__profile">
+        <div class="card__avatarContainerDos">
+            <span class="card__defaultImage"> </span>
+        </div>
+        <div class="card__profileInformation">
+            <div class="card__profilePrimeInfo">
+                <div class="card__account">
+                    <span class="card__name"></span>
+                </div>
+            </div>
+        </div>
+        <p class="card__title">No tienes notificaciones pendientes</p>
+    </div>
+    <div class="card__content">
+        <div class="card__information">
+            <p class="card__description"></p>
+        </div>
+    </div>
+</div>

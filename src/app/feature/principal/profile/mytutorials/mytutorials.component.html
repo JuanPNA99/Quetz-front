@@ -51,3 +51,23 @@
         </div>
     </div>
 </div>
+
+<div class="card" *ngIf="userData?.tutorial_Usuario.length == 0">
+    <div class="card__profile">
+        <div class="card__avatarContainerDos"></div>
+        <div class="card__profileInformation">
+            <div class="card__profilePrimeInfo">
+                <div class="card__account">
+                    <h1 class="card__title"></h1>
+                </div>
+                <div class="card__likes">
+                    <span class="card__likesNumber"></span>
+                </div>
+            </div>
+            <span class="card__date"></span>
+        </div>
+    </div>
+    <div class="card__content">
+        <p class="card__descriptionDos">Aun no tienes tutoriales creados</p>
+    </div>
+</div>
