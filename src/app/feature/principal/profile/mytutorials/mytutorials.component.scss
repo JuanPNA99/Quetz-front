@@ -75,10 +75,12 @@
     }
     &__description {
         width: 100%;
+        max-width: 565px;
         font-size: 1.3rem;
         text-align: center;
         justify-content: center;
         padding: 70px 0;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         height: 150px;
