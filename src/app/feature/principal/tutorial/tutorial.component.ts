@@ -11,6 +11,7 @@ import { TutorialService } from 'src/app/core/services/tutorial/tutorial.service
 import { ThemeService } from 'src/app/core/services/theme/theme.service';
 
 import Swal from 'sweetalert2';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
     selector: 'app-tutorial',
@@ -34,7 +35,8 @@ export class TutorialComponent implements OnInit {
         private router: Router,
         private modalService: NgbModal,
         private tutorialService: TutorialService,
-        private themeService: ThemeService
+        private themeService: ThemeService,
+        private usersService: UsersService
     ) {}
 
     ngOnInit() {

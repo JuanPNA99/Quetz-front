@@ -82,6 +82,9 @@
             *ngIf="currentView === 1"
             [userData]="userData"
         ></app-my-information>
-        <app-my-followers *ngIf="currentView === 2"></app-my-followers>
+        <app-my-followers
+            *ngIf="currentView === 2"
+            [userData]="userData"
+        ></app-my-followers>
     </div>
 </section>

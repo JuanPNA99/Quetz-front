@@ -1,66 +1,22 @@
 <div class="info">
-    <div class="info__row">
+    <div
+        class="info__row"
+        *ngFor="let follower of userData?.following; let i = index"
+    >
         <img
+            *ngIf="follower.following_user_id.foto_perfil != null"
             class="info__icon"
-            src="https://picsum.photos/300/300"
+            [src]="follower.following_user_id.foto_perfil"
             alt="User.png"
         />
-        <p class="info__description">Usuario</p>
-    </div>
-    <div class="info__row">
         <img
+            *ngIf="follower.following_user_id.foto_perfil == null"
             class="info__icon"
-            src="https://picsum.photos/300/300"
+            src="https://picsum.photos/400?random={{ i }}"
             alt="User.png"
         />
-        <p class="info__description">Usuario</p>
-    </div>
-    <div class="info__row">
-        <img
-            class="info__icon"
-            src="https://picsum.photos/300/300"
-            alt="User.png"
-        />
-        <p class="info__description">Usuario</p>
-    </div>
-    <div class="info__row">
-        <img
-            class="info__icon"
-            src="https://picsum.photos/300/300"
-            alt="User.png"
-        />
-        <p class="info__description">Usuario</p>
-    </div>
-    <div class="info__row">
-        <img
-            class="info__icon"
-            src="https://picsum.photos/300/300"
-            alt="User.png"
-        />
-        <p class="info__description">Usuario</p>
-    </div>
-    <div class="info__row">
-        <img
-            class="info__icon"
-            src="https://picsum.photos/300/300"
-            alt="User.png"
-        />
-        <p class="info__description">Usuario</p>
-    </div>
-    <div class="info__row">
-        <img
-            class="info__icon"
-            src="https://picsum.photos/300/300"
-            alt="User.png"
-        />
-        <p class="info__description">Usuario</p>
-    </div>
-    <div class="info__row">
-        <img
-            class="info__icon"
-            src="https://picsum.photos/300/300"
-            alt="User.png"
-        />
-        <p class="info__description">Usuario</p>
+        <p class="info__description">
+            {{ follower.following_user_id.username }}
+        </p>
     </div>
 </div>

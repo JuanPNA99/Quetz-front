@@ -47,4 +47,11 @@ export class UsersService {
             environment.API_URL + this.URL_PATH + 'profile'
         );
     }
+
+    postFollow(formData: any) {
+        return this.http.post<any>(
+            environment.API_URL + this.URL_PATH + 'social/',
+            formData
+        );
+    }
 }

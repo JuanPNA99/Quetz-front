@@ -3,14 +3,15 @@
         <div class="tutorial__accountHeader">
             <div class="tutorial__avatarContainer">
                 <img
+                    *ngIf="tutorialData?.autor.foto_perfil != null"
                     class="tutorial__avatar"
-                    src="assets/images/user/avatar.jpg"
+                    [src]="tutorialData?.autor.foto_perfil"
                     alt="avatar"
                 />
-                <span class="card__defaultImage">
+                <span class="tutorial__defaultImage">
                     <i
-                        *ngIf="tutorialData.autor.foto_perfil == null"
-                        class="card__avatar fas fa-user fa-2x"
+                        *ngIf="tutorialData?.autor.foto_perfil == null"
+                        class="tutorial__avatar fas fa-user fa-2x"
                     ></i
                 ></span>
             </div>
@@ -19,17 +20,29 @@
                     <div class="tutorial__accountName">
                         {{ tutorialData?.autor.username }}&nbsp;
                         <span class="tutorial__circle">&#11044;</span>
-                        <span class="tutorial__follow">&nbsp;Seguir</span>
+                        <button
+                            class="tutorial__followButton"
+                            (click)="followUser()"
+                        >
+                            <span
+                                *ngIf="following == false"
+                                class="tutorial__follow"
+                                >&nbsp;Seguir</span
+                            >
+                        </button>
+                        <span *ngIf="following" class="tutorial__follow"
+                            >&nbsp;Siguiendo</span
+                        >
                     </div>
                     <div class="tutorial__likes">
                         <span class="tutorial__likesNumber">{{
-                            tutorialData.plumas_tutoriales.length
+                            tutorialData?.plumas_tutoriales.length
                         }}</span>
                         <i class="fas fa-feather-alt tutorial__likesIcon"></i>
                     </div>
                 </div>
                 <div class="tutorial__accountDate">
-                    {{ tutorialData.fecha_creacion | date: "fullDate" }}
+                    {{ tutorialData?.fecha_creacion | date: "fullDate" }}
                 </div>
             </div>
         </div>
