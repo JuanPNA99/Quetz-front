@@ -38,7 +38,6 @@ export class ProfileComponent implements OnInit {
         this.usersService.profile().subscribe(
             (res) => {
                 this.userData = res;
-                console.log(res);
             },
             (err) => {
                 console.log(err);
